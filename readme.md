@@ -1,0 +1,1 @@
+WCF integration for DryIoc, ported from the WCF integration for [SimpleInjector](https://github.com/simpleinjector/SimpleInjector).

@@ -1,0 +1,5 @@
+﻿<%@ ServiceHost Language="C#"
+    Debug="true"
+    Service="WcfSample.Service.ISampleService"
+    CodeBehind="SampleService.svc.cs"
+    Factory="DryIoc.Wcf.DryIocServiceHostFactory,DryIoc.Wcf"%>

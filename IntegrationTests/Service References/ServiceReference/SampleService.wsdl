@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SampleService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:11119/SampleService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:11119/SampleService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISampleService_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetHashCodeOfFoo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHashCodeOfFoo" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetHashCodeOfFoo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHashCodeOfFooResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetHashCodeOfBar_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHashCodeOfBar" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetHashCodeOfBar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHashCodeOfBarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetHashCodeOfSingleton_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHashCodeOfSingleton" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetHashCodeOfSingleton_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHashCodeOfSingletonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetHashCodeOfTransient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHashCodeOfTransient" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetHashCodeOfTransient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHashCodeOfTransientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetHashCodeOfSelf_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHashCodeOfSelf" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetHashCodeOfSelf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHashCodeOfSelfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_BarEqualsFooBar_InputMessage">
+    <wsdl:part name="parameters" element="tns:BarEqualsFooBar" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_BarEqualsFooBar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BarEqualsFooBarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_ResolutionWorksForAsyncOperations_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResolutionWorksForAsyncOperations" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_ResolutionWorksForAsyncOperations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResolutionWorksForAsyncOperationsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISampleService">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetData" message="tns:ISampleService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetDataResponse" message="tns:ISampleService_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHashCodeOfFoo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfFoo" message="tns:ISampleService_GetHashCodeOfFoo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfFooResponse" message="tns:ISampleService_GetHashCodeOfFoo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHashCodeOfBar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfBar" message="tns:ISampleService_GetHashCodeOfBar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfBarResponse" message="tns:ISampleService_GetHashCodeOfBar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHashCodeOfSingleton">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfSingleton" message="tns:ISampleService_GetHashCodeOfSingleton_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfSingletonResponse" message="tns:ISampleService_GetHashCodeOfSingleton_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHashCodeOfTransient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfTransient" message="tns:ISampleService_GetHashCodeOfTransient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfTransientResponse" message="tns:ISampleService_GetHashCodeOfTransient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHashCodeOfSelf">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfSelf" message="tns:ISampleService_GetHashCodeOfSelf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfSelfResponse" message="tns:ISampleService_GetHashCodeOfSelf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BarEqualsFooBar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/BarEqualsFooBar" message="tns:ISampleService_BarEqualsFooBar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/BarEqualsFooBarResponse" message="tns:ISampleService_BarEqualsFooBar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResolutionWorksForAsyncOperations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/ResolutionWorksForAsyncOperations" message="tns:ISampleService_ResolutionWorksForAsyncOperations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/ResolutionWorksForAsyncOperationsResponse" message="tns:ISampleService_ResolutionWorksForAsyncOperations_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISampleService" type="tns:ISampleService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHashCodeOfFoo">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetHashCodeOfFoo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHashCodeOfBar">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetHashCodeOfBar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHashCodeOfSingleton">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetHashCodeOfSingleton" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHashCodeOfTransient">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetHashCodeOfTransient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHashCodeOfSelf">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetHashCodeOfSelf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BarEqualsFooBar">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/BarEqualsFooBar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResolutionWorksForAsyncOperations">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/ResolutionWorksForAsyncOperations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SampleService">
+    <wsdl:port name="BasicHttpBinding_ISampleService" binding="tns:BasicHttpBinding_ISampleService">
+      <soap:address location="http://localhost:11119/SampleService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
