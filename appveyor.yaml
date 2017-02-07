@@ -11,7 +11,7 @@ assembly_info:
   assembly_informational_version: "{version}"
 
 before_build:
-  - nuget restore  
+  - cmd: nuget restore -verbosity detailed
 
 build:
   parallel: true
