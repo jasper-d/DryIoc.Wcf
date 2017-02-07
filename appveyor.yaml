@@ -21,8 +21,8 @@ build:
 test_script:
     - ps: .\run-tests.ps1
 
-cache:
-  - packages -> **\packages.config
+#cache:
+#  - packages -> **\packages.config
 
 before_deploy:
   - ps: .\nuget\pack.ps1
