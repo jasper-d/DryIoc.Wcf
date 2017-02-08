@@ -19,7 +19,7 @@ init:
       }
       else
       {
-        Update-AppveyorBuild -Version "$($env:APPVEYOR_BUILD_VERSION).$($env:APPVEYOR_BUILD_NUMBER)"
+        Update-AppveyorBuild -Version "$($env:APPVEYOR_BUILD_VERSION).1"
       }
 
 before_build:
