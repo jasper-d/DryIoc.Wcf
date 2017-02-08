@@ -40,7 +40,7 @@ after_build:
   - ps: .\nuget\pack.ps1
 
 artifacts:
-  - path: '**\*.nupkg'
+  - path: '**\DryIoc.Wcf.dll.*.nupkg'
     name: nuget
     type: NuGetPackage
 deploy:
