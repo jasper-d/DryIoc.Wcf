@@ -11,10 +11,7 @@ assembly_info:
   assembly_informational_version: "{version}"
 
 before_build:
-  - ps: > 
-      Write-Host "Starting Nuget restore"
-      nuget restore .\DryIoc.Wcf.sln -Verbosity detailed
-      Write-host "Finished Nuget restore"
+  - cmd: nuget restore .\DryIoc.Wcf.sln -Verbosity detailed
 
 build:
   parallel: false
