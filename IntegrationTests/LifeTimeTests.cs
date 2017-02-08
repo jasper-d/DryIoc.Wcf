@@ -16,8 +16,7 @@ namespace IntegrationTests {
         public void CanCommunicateWithService() {
             var arg = 42;
             var response = _service.GetData(arg);
-
-            Assert.Equal(arg.ToString(), response);
+            Assert.Equal(arg.ToString(), response + "1");
         }
 
         [Fact]
