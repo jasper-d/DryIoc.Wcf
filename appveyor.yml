@@ -36,7 +36,7 @@ test_script:
 cache:
   - packages -> **\packages.config
 
-before_deploy:
+after_build:
   - ps: .\nuget\pack.ps1
 
 artifacts:
