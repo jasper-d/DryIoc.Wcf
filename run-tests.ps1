@@ -19,6 +19,8 @@ Write-host "Executing test..."
 
 packages\xunit.runner.console.2.2.0-beta4-build3444\tools\xunit.console $testAppPath -xml .\test-results.xml
 
+$xunitExitCode = $LastExitCode
+
 if($env:APPVEYOR_JOB_ID) {
     $wc = New-Object 'System.Net.WebClient'
     $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\test-results.xml))
@@ -27,3 +29,5 @@ if($env:APPVEYOR_JOB_ID) {
 Write-Host "Stop IIS Express"
 
 Stop-Process -Name "iisexpress"
+
+if($xunitExitCode -ne 0) { $host.SetShouldExit($xunitExitCode) }
