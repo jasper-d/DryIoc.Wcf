@@ -19,7 +19,7 @@ init:
       }
       else
       {
-        Update-AppveyorBuild -Version "dev-$($env:APPVEYOR_REPO_COMMIT.substring(0,7))"
+        Update-AppveyorBuild -Version "$($env:APPVEYOR_BUILD_VERSION).$($env:APPVEYOR_BUILD_NUMBER)"
       }
 
 before_build:
@@ -49,7 +49,7 @@ deploy:
       appveyor_repo_tag: true
   - provider: GitHub
     description: 'Release'
-    release: DryIoc.Wcf.dll-v$(appveyor_build_version)
+    release: $(appveyor_build_version)
     auth_token:
       secure: K71ovddtT7BuOR1D1K9uVRdOT2+Apl6GdQjBYjUki/ySUX9EcWb2MNtupx5ymrkt
     artifact: '.\nuget\artifacts\*.nupkg'
