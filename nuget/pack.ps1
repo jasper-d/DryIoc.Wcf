@@ -10,6 +10,6 @@ $content = $content -replace '\$version\$',$versionStr
 
 $content | Out-File $root\nuget\DryIoc.Wcf.compiled.nuspec
 
-& nuget pack $root\nuget\DryIoc.Wcf.nuspec -Version $version -Symbols -OutputDirectory "$root\nuget\artifacts" -NonInteractive -Build -Properties Configuration=Release
+& nuget pack $root\nuget\DryIoc.Wcf.nuspec -Version $version -Symbols -OutputDirectory "$root" -NonInteractive -Build -Properties Configuration=Release
 
 #nuget pack 
