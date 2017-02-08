@@ -19,7 +19,7 @@ init:
       }
       else
       {
-        Update-AppveyorBuild -Version "$($env:APPVEYOR_BUILD_VERSION).1"
+        Update-AppveyorBuild -Version "$($env:APPVEYOR_BUILD_VERSION).$($env:APPVEYOR_BUILD_NUMBER)"
       }
 
 before_build:
@@ -38,13 +38,16 @@ cache:
 
 before_deploy:
   - ps: .\nuget\pack.ps1
-  
+
+artifacts:
+  - path: 'nuget\artifacts\*.nupkg'
+
 deploy:
   - provider: NuGet
     api_key:
       secure: LKL3BM5Iphp+fjoZzhqLAMrQOLrNXvY4tEEa5zRKpTY2Ti4gOzBUhxaprnCzfTO3
     skip_symbols: false
-    artifact: /.*\.nupkg/ 
+    artifact: /^DryIoc\.Wcf\.dll.*\.nupkg$/
     on:
       appveyor_repo_tag: true
   - provider: GitHub
@@ -52,6 +55,6 @@ deploy:
     release: $(appveyor_build_version)
     auth_token:
       secure: K71ovddtT7BuOR1D1K9uVRdOT2+Apl6GdQjBYjUki/ySUX9EcWb2MNtupx5ymrkt
-    artifact: /.*\.nupkg/ 
+    artifact: 'nuget\artifacts\*.nupkg'
     on:
       appveyor_repo_tag: true 
