@@ -44,7 +44,7 @@ deploy:
     api_key:
       secure: LKL3BM5Iphp+fjoZzhqLAMrQOLrNXvY4tEEa5zRKpTY2Ti4gOzBUhxaprnCzfTO3
     skip_symbols: false
-    artifact: '.\nuget\artifacts\*.nupkg'
+    artifact: '**\*.nupkg'
     on:
       appveyor_repo_tag: true
   - provider: GitHub
@@ -52,6 +52,6 @@ deploy:
     release: $(appveyor_build_version)
     auth_token:
       secure: K71ovddtT7BuOR1D1K9uVRdOT2+Apl6GdQjBYjUki/ySUX9EcWb2MNtupx5ymrkt
-    artifact: '.\nuget\artifacts\*.nupkg'
+    artifact: '**\*.nupkg'
     on:
       appveyor_repo_tag: true 
