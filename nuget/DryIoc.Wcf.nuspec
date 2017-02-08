@@ -6,8 +6,8 @@
     <title>DryIoc.Wcf.dll</title>
     <authors>Jasper Dunker, SimpleInjector Contributors</authors>
     <owners>jasperd</owners>
-    <licenseUrl>https://github.com/jasper-d/DryIoc.Wcf/blob/master/licence.md</licenseUrl>
-    <projectUrl>https://github.com/jasper-d/DryIoc.Wcf</projectUrl>
+    <licenseUrl>https://github.com/jasper-d/dryioc.wcf/blob/master/license.md</licenseUrl>
+    <projectUrl>https://github.com/jasper-d/dryioc.wcf</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>DryIoc WCF integration, ported from the SimpleInjector WCF integration package</description>
     <tags>IoC Container Inversion-of-Control DI Dependency-Injection DRY Service-Provider Factory WCF DryIoc</tags>
