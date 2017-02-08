@@ -4,7 +4,7 @@ If ([environment]::Is64BitOperatingSystem) {
     $iisExpressPath = "c:\program files (x86)\iis express\iisexpress.exe"
 }
 $appPath = (Resolve-path .\WcfSample.Service)
-$testAppPath = (Resolve-path .\IntegrationTests\bin\Debug\IntegrationTests.dll)
+$testAppPath = (Resolve-path .\IntegrationTests\bin\Release\IntegrationTests.dll)
 #$testResultsPath = (Resolve-path .\test-results.xml)
 Write-Host "IIS Express:"
 Write-Host "iisExpressPath:  " $iisExpressPath
