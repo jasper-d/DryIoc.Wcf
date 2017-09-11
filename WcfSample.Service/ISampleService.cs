@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Threading.Tasks;
 
@@ -10,19 +11,19 @@ namespace WcfSample.Service {
         string GetData(int value);
 
         [OperationContract]
-        int GetHashCodeOfFoo();
+        Guid GetHashCodeOfFoo();
 
         [OperationContract]
-        int GetHashCodeOfBar();
+        Guid GetHashCodeOfBar();
 
         [OperationContract]
-        int GetHashCodeOfSingleton();
+        Guid GetHashCodeOfSingleton();
 
         [OperationContract]
-        int GetHashCodeOfTransient();
+        Guid GetHashCodeOfTransient();
 
         [OperationContract]
-        int GetHashCodeOfSelf();
+        Guid GetHashCodeOfSelf();
 
         [OperationContract]
         bool BarEqualsFooBar();

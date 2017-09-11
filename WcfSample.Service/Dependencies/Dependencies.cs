@@ -8,31 +8,75 @@ using System.Web;
 namespace WcfSample.Service.Dependencies {
     public interface IFoo {
         IBar Bar { get; }
+
+        Guid GetHash();
     }
 
     public class Foo : IFoo {
+        private readonly Guid _hash;
         private IBar _bar;
 
         public IBar Bar { get { return _bar; } }
 
         public Foo(IBar bar) {
-            if(bar == null) {
+            _hash = Guid.NewGuid();
+            if (bar == null) {
                 throw new ArgumentNullException(nameof(bar));
             }
 
             _bar = bar;
         }
+
+        public Guid GetHash() {
+            return _hash;
+        }
     }
 
-    public interface IBar { }
+    public interface IBar {
+        Guid GetHash();
+    }
 
-    public class Bar : IBar { }
+    public class Bar : IBar {
+        private readonly Guid _hash;
 
-    public interface ISingleton { }
-    public class Singleton : ISingleton { };
+        public Bar() {
+            _hash = Guid.NewGuid();
+        }
 
-    public interface ITransient { }
-    public class Transient : ITransient {}
+        public Guid GetHash() {
+            return _hash;
+        }
+    }
+
+    public interface ISingleton {
+        Guid GetHash();
+    }
+    public class Singleton : ISingleton {
+        private readonly Guid _hash;
+
+        public Singleton() {
+            _hash = Guid.NewGuid();
+        }
+
+        public Guid GetHash() {
+            return _hash;
+        }
+    };
+
+    public interface ITransient {
+        Guid GetHash();
+    }
+    public class Transient : ITransient {
+        private readonly Guid _hash;
+
+        public Transient() {
+            _hash = Guid.NewGuid();
+        }
+
+        public Guid GetHash() {
+            return _hash;
+        }
+    }
 
     public interface IAsyncClass {
         Task<IBar> ResolveAsync();

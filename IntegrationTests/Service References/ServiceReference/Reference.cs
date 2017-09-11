@@ -22,34 +22,34 @@ namespace IntegrationTests.ServiceReference {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetHashCodeOfFoo", ReplyAction="http://tempuri.org/ISampleService/GetHashCodeOfFooResponse")]
-        int GetHashCodeOfFoo();
+        System.Guid GetHashCodeOfFoo();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetHashCodeOfFoo", ReplyAction="http://tempuri.org/ISampleService/GetHashCodeOfFooResponse")]
-        System.Threading.Tasks.Task<int> GetHashCodeOfFooAsync();
+        System.Threading.Tasks.Task<System.Guid> GetHashCodeOfFooAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetHashCodeOfBar", ReplyAction="http://tempuri.org/ISampleService/GetHashCodeOfBarResponse")]
-        int GetHashCodeOfBar();
+        System.Guid GetHashCodeOfBar();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetHashCodeOfBar", ReplyAction="http://tempuri.org/ISampleService/GetHashCodeOfBarResponse")]
-        System.Threading.Tasks.Task<int> GetHashCodeOfBarAsync();
+        System.Threading.Tasks.Task<System.Guid> GetHashCodeOfBarAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetHashCodeOfSingleton", ReplyAction="http://tempuri.org/ISampleService/GetHashCodeOfSingletonResponse")]
-        int GetHashCodeOfSingleton();
+        System.Guid GetHashCodeOfSingleton();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetHashCodeOfSingleton", ReplyAction="http://tempuri.org/ISampleService/GetHashCodeOfSingletonResponse")]
-        System.Threading.Tasks.Task<int> GetHashCodeOfSingletonAsync();
+        System.Threading.Tasks.Task<System.Guid> GetHashCodeOfSingletonAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetHashCodeOfTransient", ReplyAction="http://tempuri.org/ISampleService/GetHashCodeOfTransientResponse")]
-        int GetHashCodeOfTransient();
+        System.Guid GetHashCodeOfTransient();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetHashCodeOfTransient", ReplyAction="http://tempuri.org/ISampleService/GetHashCodeOfTransientResponse")]
-        System.Threading.Tasks.Task<int> GetHashCodeOfTransientAsync();
+        System.Threading.Tasks.Task<System.Guid> GetHashCodeOfTransientAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetHashCodeOfSelf", ReplyAction="http://tempuri.org/ISampleService/GetHashCodeOfSelfResponse")]
-        int GetHashCodeOfSelf();
+        System.Guid GetHashCodeOfSelf();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetHashCodeOfSelf", ReplyAction="http://tempuri.org/ISampleService/GetHashCodeOfSelfResponse")]
-        System.Threading.Tasks.Task<int> GetHashCodeOfSelfAsync();
+        System.Threading.Tasks.Task<System.Guid> GetHashCodeOfSelfAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/BarEqualsFooBar", ReplyAction="http://tempuri.org/ISampleService/BarEqualsFooBarResponse")]
         bool BarEqualsFooBar();
@@ -99,43 +99,43 @@ namespace IntegrationTests.ServiceReference {
             return base.Channel.GetDataAsync(value);
         }
         
-        public int GetHashCodeOfFoo() {
+        public System.Guid GetHashCodeOfFoo() {
             return base.Channel.GetHashCodeOfFoo();
         }
         
-        public System.Threading.Tasks.Task<int> GetHashCodeOfFooAsync() {
+        public System.Threading.Tasks.Task<System.Guid> GetHashCodeOfFooAsync() {
             return base.Channel.GetHashCodeOfFooAsync();
         }
         
-        public int GetHashCodeOfBar() {
+        public System.Guid GetHashCodeOfBar() {
             return base.Channel.GetHashCodeOfBar();
         }
         
-        public System.Threading.Tasks.Task<int> GetHashCodeOfBarAsync() {
+        public System.Threading.Tasks.Task<System.Guid> GetHashCodeOfBarAsync() {
             return base.Channel.GetHashCodeOfBarAsync();
         }
         
-        public int GetHashCodeOfSingleton() {
+        public System.Guid GetHashCodeOfSingleton() {
             return base.Channel.GetHashCodeOfSingleton();
         }
         
-        public System.Threading.Tasks.Task<int> GetHashCodeOfSingletonAsync() {
+        public System.Threading.Tasks.Task<System.Guid> GetHashCodeOfSingletonAsync() {
             return base.Channel.GetHashCodeOfSingletonAsync();
         }
         
-        public int GetHashCodeOfTransient() {
+        public System.Guid GetHashCodeOfTransient() {
             return base.Channel.GetHashCodeOfTransient();
         }
         
-        public System.Threading.Tasks.Task<int> GetHashCodeOfTransientAsync() {
+        public System.Threading.Tasks.Task<System.Guid> GetHashCodeOfTransientAsync() {
             return base.Channel.GetHashCodeOfTransientAsync();
         }
         
-        public int GetHashCodeOfSelf() {
+        public System.Guid GetHashCodeOfSelf() {
             return base.Channel.GetHashCodeOfSelf();
         }
         
-        public System.Threading.Tasks.Task<int> GetHashCodeOfSelfAsync() {
+        public System.Threading.Tasks.Task<System.Guid> GetHashCodeOfSelfAsync() {
             return base.Channel.GetHashCodeOfSelfAsync();
         }
         

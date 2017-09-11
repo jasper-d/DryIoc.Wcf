@@ -7,6 +7,7 @@ using MoreLinq;
 
 namespace WcfSample.Service {
     public class SampleService : ISampleService {
+        private readonly Guid _hash;
         private IFoo _foo;
         private IBar _bar;
         private ISingleton _singleton;
@@ -14,7 +15,8 @@ namespace WcfSample.Service {
         private IAsyncClass _asyncClass;
 
         public SampleService(IFoo foo, IBar bar, ISingleton singleton, ITransient transient, IAsyncClass asyncClass) {
-            if(foo == null) {
+            _hash = Guid.NewGuid();
+            if (foo == null) {
                 throw new ArgumentNullException(nameof(foo));
             }
             if (bar == null) {
@@ -42,24 +44,24 @@ namespace WcfSample.Service {
             return value.ToString();
         }
 
-        public int GetHashCodeOfFoo() {
-            return _foo.GetHashCode();
+        public Guid GetHashCodeOfFoo() {
+            return _foo.GetHash();
         }
 
-        public int GetHashCodeOfBar() {
-            return _bar.GetHashCode();
+        public Guid GetHashCodeOfBar() {
+            return _bar.GetHash();
         }
 
-        public int GetHashCodeOfSingleton() {
-            return _singleton.GetHashCode();
+        public Guid GetHashCodeOfSingleton() {
+            return _singleton.GetHash();
         }
 
-        public int GetHashCodeOfTransient() {
-            return _transient.GetHashCode();
+        public Guid GetHashCodeOfTransient() {
+            return _transient.GetHash();
         }
 
-        public int GetHashCodeOfSelf() {
-            return GetHashCode();
+        public Guid GetHashCodeOfSelf() {
+            return _hash;
         }
 
         public bool BarEqualsFooBar() {
