@@ -28,15 +28,6 @@ namespace DryIoc.Wcf {
             return extension != null ? extension.CurrentScopedContainer.GetCurrentScope() : null;
         }
 
-        internal static void RemoveScope(this InstanceContext instanceContext) {
-            var extension = instanceContext.Extensions.Find<DryIocInstanceContextExtension>();
-
-            if (extension != null) {
-                extension.CurrentScopedContainer?.Dispose();
-                extension.CurrentScopedContainer = null;
-            }
-        }
-
         private sealed class DryIocInstanceContextExtension : IExtension<InstanceContext> {
             internal IContainer CurrentScopedContainer { get; set; }
 

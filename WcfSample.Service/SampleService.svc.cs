@@ -1,12 +1,11 @@
-﻿using DryIoc;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using WcfSample.Service.Dependencies;
 using MoreLinq;
-using System.ServiceModel;
 
-namespace WcfSample.Service {
+namespace WcfSample.Service
+{
     public class SampleService : ISampleService {
         private readonly Guid _hash;
         private IFoo _foo;
