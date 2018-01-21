@@ -9,13 +9,9 @@
     <Copyright>Jasper Dunker</Copyright>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DryIoc.dll" Version="2.12.7" />
+    <PackageReference Include="DryIoc.dll" Version="2.12.1" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DryIoc, Version=2.12.7.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\DryIoc.dll.2.12.7\lib\net45\DryIoc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Activation" />
   </ItemGroup>

@@ -22,7 +22,7 @@ Start-Process -FilePath $iisExpressPath -ArgumentList "/port:$port /path:$appPat
 
 Write-Host "Executing test..." -ForegroundColor Magenta
 
-packages\xunit.runner.console.2.2.0-beta4-build3444\tools\xunit.console $testAppPath -xml .\test-results.xml
+packages\xunit.runner.console.2.3.1\tools\net452\xunit.console $testAppPath -xml .\test-results.xml
 
 $xunitExitCode = $LastExitCode
 
