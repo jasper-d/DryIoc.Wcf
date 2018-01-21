@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WcfSample.Service.Dependencies;
 using MoreLinq;
+using System.ServiceModel;
 
 namespace WcfSample.Service {
     public class SampleService : ISampleService {

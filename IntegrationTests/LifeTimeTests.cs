@@ -4,12 +4,14 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace IntegrationTests {
     public class LifeTimeTests : IDisposable {
         private SampleServiceClient _service;
-
-        public LifeTimeTests() {
+        private readonly ITestOutputHelper _output;
+        public LifeTimeTests(ITestOutputHelper outputTestHelper) {
+            _output = outputTestHelper;
             _service = new SampleServiceClient();
 
         }
@@ -57,6 +59,7 @@ namespace IntegrationTests {
 
             Assert.NotEqual(response1, response2);
         }
+
 
         [Fact]
         public async Task AsyncResolutionWorks() {

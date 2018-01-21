@@ -20,27 +20,17 @@ namespace DryIoc.Wcf {
         public DryIocServiceHost(IContainer container, object singletonInstance, params Uri[] baseAddresses)
             : base(singletonInstance, baseAddresses)
         {
-            if (container == null) {
-                throw new ArgumentNullException(nameof(container));
-            }
-            if (container == null) {
+            if (singletonInstance == null) {
                 throw new ArgumentNullException(nameof(singletonInstance));
             }
 
-            _container = container;
+            _container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
         internal DryIocServiceHost(IContainer container, Type serviceAbstraction, Type implementationType, params Uri[] baseAddresses)
             : base(implementationType, baseAddresses) {
-            if (container == null) {
-                throw new ArgumentNullException(nameof(container));
-            }
-            if (serviceAbstraction == null) {
-                throw new ArgumentNullException(nameof(container));
-            }
-
-            _container = container;
-            _serviceAbstraction = serviceAbstraction;
+            _container = container ?? throw new ArgumentNullException(nameof(container));
+            _serviceAbstraction = serviceAbstraction ?? throw new ArgumentNullException(nameof(container));
         }
 
         public IEnumerable<ContractDescription> GetImplementedContracts() => ImplementedContracts.Values;

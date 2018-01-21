@@ -8,13 +8,10 @@ namespace DryIoc.Wcf {
         private static IContainer s_container;
 
         public static void SetContainer(IContainer container) {
-            if(container == null) {
-                throw new ArgumentNullException(nameof(container));
-            }
-            if(s_container != null) {
+            if (s_container != null) {
                 throw new InvalidOperationException($"{nameof(SetContainer)} can only be called once. Container is already set.");
             }
-            s_container = container;
+            s_container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
         internal static bool HasInstanceContextModeSingle(Type serviceType) =>

@@ -32,6 +32,7 @@ namespace DryIoc.Wcf {
             var extension = instanceContext.Extensions.Find<DryIocInstanceContextExtension>();
 
             if (extension != null) {
+                extension.CurrentScopedContainer?.Dispose();
                 extension.CurrentScopedContainer = null;
             }
         }

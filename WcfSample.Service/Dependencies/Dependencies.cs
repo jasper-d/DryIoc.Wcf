@@ -18,6 +18,8 @@ namespace WcfSample.Service.Dependencies {
 
         public IBar Bar { get { return _bar; } }
 
+
+
         public Foo(IBar bar) {
             _hash = Guid.NewGuid();
             if (bar == null) {
