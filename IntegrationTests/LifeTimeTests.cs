@@ -9,9 +9,8 @@ using Xunit.Abstractions;
 namespace IntegrationTests {
     public class LifeTimeTests : IDisposable {
         private SampleServiceClient _service;
-        private readonly ITestOutputHelper _output;
-        public LifeTimeTests(ITestOutputHelper outputTestHelper) {
-            _output = outputTestHelper;
+
+        public LifeTimeTests() {
             _service = new SampleServiceClient();
 
         }
