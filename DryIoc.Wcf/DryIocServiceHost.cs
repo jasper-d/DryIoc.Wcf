@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using DryIoc;
 
 namespace DryIoc.Wcf {
     public class DryIocServiceHost : ServiceHost {
@@ -10,11 +11,7 @@ namespace DryIoc.Wcf {
 
         public DryIocServiceHost(IContainer container, Type serviceType, params Uri[] baseAddresses)
             : base(serviceType, baseAddresses) {
-            if(container == null) {
-                throw new ArgumentNullException(nameof(container));
-            }
-
-            _container = container;
+            _container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
         public DryIocServiceHost(IContainer container, object singletonInstance, params Uri[] baseAddresses)

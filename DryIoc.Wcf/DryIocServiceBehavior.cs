@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
+using DryIoc;
 
 namespace DryIoc.Wcf {
     public class DryIocServiceBehavior : IServiceBehavior {
@@ -14,11 +15,7 @@ namespace DryIoc.Wcf {
         internal Type ServiceType { get; set; }
 
         public DryIocServiceBehavior(IContainer container) {
-            if(container == null) {
-                throw new ArgumentNullException(nameof(container));
-            }
-
-            _container = container;
+            _container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
         public void AddBindingParameters(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase, Collection<ServiceEndpoint> endpoints, BindingParameterCollection bindingParameters) {}
