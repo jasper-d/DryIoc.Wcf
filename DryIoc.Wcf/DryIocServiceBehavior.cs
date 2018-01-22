@@ -6,7 +6,6 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
-using DryIoc;
 
 namespace DryIoc.Wcf {
     public class DryIocServiceBehavior : IServiceBehavior {
