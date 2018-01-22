@@ -35,7 +35,6 @@ namespace DryIoc.Wcf {
             foreach (var endpointDispatcher in endpointDispatchers) {
                 endpointDispatcher.DispatchRuntime.InstanceProvider = instanceProvider;
             }
-
         }
 
         public void Validate(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase) {}

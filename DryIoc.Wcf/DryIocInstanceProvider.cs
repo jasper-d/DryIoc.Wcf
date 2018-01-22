@@ -9,15 +9,8 @@ namespace DryIoc.Wcf {
         private readonly Type _serviceType;
 
         public DryIocInstanceProvider(IContainer container, Type serviceType) {
-            if(container == null) {
-                throw new ArgumentNullException(nameof(container));
-            }
-            if(serviceType == null) {
-                throw new ArgumentNullException(nameof(serviceType));
-            }
-
-            _container = container;
-            _serviceType = serviceType;
+            _container = container ?? throw new ArgumentNullException(nameof(container));
+            _serviceType = serviceType ?? throw new ArgumentNullException(nameof(serviceType));
         }
 
         public object GetInstance(InstanceContext instanceContext) {
@@ -28,7 +21,7 @@ namespace DryIoc.Wcf {
             var scopedContainer = instanceContext.OpenScope(_container);
 
             try {
-                return scopedContainer.Resolve(_serviceType);
+                return scopedContainer.Resolve(_serviceType, false);
             } catch {
                 scopedContainer.Dispose();
                 throw;

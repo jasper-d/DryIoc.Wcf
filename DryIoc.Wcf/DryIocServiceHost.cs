@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using DryIoc;
 
 namespace DryIoc.Wcf {
     public class DryIocServiceHost : ServiceHost {

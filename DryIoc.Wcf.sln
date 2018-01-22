@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "Integra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfSample.Service", "WcfSample.Service\WcfSample.Service.csproj", "{82EAECC7-F09B-4430-8276-333AB3832E9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryIoc.Wcf.Tests", "DryIoc.Wcf.Tests\DryIoc.Wcf.Tests.csproj", "{1AC988DD-B1CD-48A0-B49B-11D35EBB0675}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,8 +32,15 @@ Global
 		{82EAECC7-F09B-4430-8276-333AB3832E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82EAECC7-F09B-4430-8276-333AB3832E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82EAECC7-F09B-4430-8276-333AB3832E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AC988DD-B1CD-48A0-B49B-11D35EBB0675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AC988DD-B1CD-48A0-B49B-11D35EBB0675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AC988DD-B1CD-48A0-B49B-11D35EBB0675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AC988DD-B1CD-48A0-B49B-11D35EBB0675}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0D59FF5-6A6A-458C-A256-0C2FA6FFB67C}
 	EndGlobalSection
 EndGlobal

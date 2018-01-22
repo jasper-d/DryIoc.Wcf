@@ -25,7 +25,7 @@ namespace DryIoc.Wcf {
 
             var extension = instanceContext.Extensions.Find<DryIocInstanceContextExtension>();
 
-            return extension != null ? extension.CurrentScopedContainer.GetCurrentScope() : null;
+            return extension?.CurrentScopedContainer.GetCurrentScope();
         }
 
         private sealed class DryIocInstanceContextExtension : IExtension<InstanceContext> {
