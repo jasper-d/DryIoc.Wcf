@@ -34,7 +34,6 @@ if($env:APPVEYOR_JOB_ID) {
 }
 
 Write-Host "Stop IIS Express"  -ForegroundColor Magenta
-
 Stop-Process -Name "iisexpress"
 
 #Terminate build if tests fail

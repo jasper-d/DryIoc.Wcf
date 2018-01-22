@@ -1,4 +1,4 @@
-image: Visual Studio 2015
+image: Visual Studio 2017
 clone_depth: 5
 platform: Any CPU
 configuration: Release
@@ -40,11 +40,8 @@ test_script:
 cache:
   - packages -> **\packages.config
 
-after_build:
-  - ps: .\nuget\pack.ps1
-
 artifacts:
-  - path: '.\nuget\artifacts\DryIoc.Wcf.dll.*.nupkg'
+  - path: '.\DryIoc.Wcf\bin\Release\DryIoc.Wcf.dll.*.nupkg'
     name: nuget
     type: NuGetPackage
 
