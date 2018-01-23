@@ -1,18 +1,25 @@
-﻿$port = 11119
+﻿$opencover = (Resolve-path .\packages\OpenCover.*\tools\OpenCover.Console.exe)
+$xunit = (Resolve-path .\packages\xunit.runner.console.*\tools\net4*\xunit.console.exe)
+$testResults = (Resolve-Path .\test-results.xml)
+
+$port = 11119
 $iisExpressPath = "c:\program files\iis express\iisexpress.exe"
 If ([environment]::Is64BitOperatingSystem) {
     $iisExpressPath = "c:\program files (x86)\iis express\iisexpress.exe"
 }
 $appPath = (Resolve-path .\WcfSample.Service)
-$testAppPath = (Resolve-path .\IntegrationTests\bin\Release\IntegrationTests.dll)
+$appPathBin = (Resolve-path .\WcfSample.Service\bin)
+$unitTestAppPath = (Resolve-path .\DryIoc.Wcf.Tests\bin\Release\DryIoc.Wcf.Tests.dll)
+$unitTestAppPathDebug = (Resolve-path .\DryIoc.Wcf.Tests\bin\Debug\DryIoc.Wcf.Tests.dll);
+$integrationTestAppPath = (Resolve-path .\IntegrationTests\bin\Release\IntegrationTests.dll)
+$integrationTestAppPathDebug = (Resolve-path .\IntegrationTests\bin\Debug\IntegrationTests.dll)
 
 $iisExpressSettings = @"
-IIS Express:
-iisExpressPath:  $iisExpressPath
-port:            $port
-appPath:         $appPath
-testAppPath:     $testAppPath
-
+IIS Express settings:
+iisExpressPath:  	$iisExpressPath
+port:            	$port
+appPath:         	$appPath
+integrationTestAppPath: $integrationTestAppPath
 "@
 
 Write-Host $iisExpressSettings  -ForegroundColor Magenta
@@ -22,22 +29,36 @@ Start-Process -FilePath $iisExpressPath -ArgumentList "/port:$port /path:$appPat
 
 Write-Host "Executing test..." -ForegroundColor Magenta
 
-packages\xunit.runner.console.2.3.1\tools\net452\xunit.console $testAppPath -xml .\test-results.xml
+&$xunit $unitTestAppPath $integrationTestAppPathDebug -xml $testResults
 
 $xunitExitCode = $LastExitCode
+
+write-host "stop iis express"  -foregroundcolor magenta
+stop-process -name "iisexpress"
 
 #Upload test results when running on Appveyor
 if($env:APPVEYOR_JOB_ID) {
 	Write-Host "Uploading test results..."  -ForegroundColor Magenta
     $wc = New-Object 'System.Net.WebClient'
-    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\test-results.xml))
+    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", $testResults)
 }
-
-Write-Host "Stop IIS Express"  -ForegroundColor Magenta
-Stop-Process -Name "iisexpress"
 
 #Terminate build if tests fail
 if($xunitExitCode -ne 0) {
 	Write-Host "Test failed, terminating build" -ForegroundColor Yellow -BackgroundColor Red
 	$host.SetShouldExit($xunitExitCode)
 }
+
+#Run OpenCover
+
+&$opencover -searchdirs:"$integrationTestAppPathDebug" -register:user -filter:"+[DryIoc.Wcf]* -[DryIoc.Wcf.Test]*" -target:"$xunit" -targetargs:"$unitTestAppPathDebug -noshadow -nologo" -output:coverage.xml
+
+
+$args = "-log:All -register:user -targetdir:`"$appPathBin`" -output:coverage.xml -filter:`"+[DryIoc.Wcf]* -[DryIoc.Wcf.Test]*`" -target:`"$iisExpressPath`" -targetargs:`"/port:$port /path:$appPath /systray:false`" -mergebyhash -mergeoutput"
+
+Start-Process $opencover -ArgumentList $args -NoNewWindow
+Start-Sleep -s 5
+
+&$xunit $integrationTestAppPath
+stop-process -name "iisexpress"
+start-sleep -s 20

@@ -243,3 +243,4 @@ ModelManifest.xml
 test-results.xml
 
 /nuget.exe
+/coverage.xml

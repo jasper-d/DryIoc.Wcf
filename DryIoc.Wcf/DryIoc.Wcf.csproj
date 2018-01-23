@@ -21,6 +21,9 @@
     <NoWarn />
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="DryIoc.dll" Version="[2.10.0,3.0)" />
