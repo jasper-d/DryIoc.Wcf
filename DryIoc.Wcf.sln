@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DryIoc.Wcf", "DryIoc.Wcf\DryIoc.Wcf.csproj", "{4DD10E45-BBF8-4F5B-A599-3ED44DC2B6B0}"
 EndProject
@@ -13,6 +13,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfSample.Service", "WcfSample.Service\WcfSample.Service.csproj", "{82EAECC7-F09B-4430-8276-333AB3832E9E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryIoc.Wcf.Tests", "DryIoc.Wcf.Tests\DryIoc.Wcf.Tests.csproj", "{1AC988DD-B1CD-48A0-B49B-11D35EBB0675}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{567F2BF8-5D62-45C0-B3B7-0A94D0FDD2CF}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		Build.psm1 = Build.psm1
+		Install-Phase.ps1 = Install-Phase.ps1
+		license.md = license.md
+		readme.md = readme.md
+		run-tests.ps1 = run-tests.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
