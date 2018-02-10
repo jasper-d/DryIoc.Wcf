@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using Moq;
 using Xunit;
 
@@ -39,13 +40,13 @@ namespace DryIoc.Wcf.Tests
         {
             var serviceType = typeof(string);
             var resolvedObject = string.Empty;
+            var message = new Mock<Message>(MockBehavior.Loose).Object;
 
             _containerMock.Setup(c => c.OpenScope(null, null)).Returns(_newContainerMock.Object);
             _newContainerMock.Setup(c => c.Resolve(serviceType, false)).Returns(resolvedObject);
 
             var sut = new DryIocInstanceProvider(_containerMock.Object, serviceType);
-            var instance = sut.GetInstance(_instanceContext);
-
+            var instance = sut.GetInstance(_instanceContext, message);
             Assert.Equal(resolvedObject, instance);
             Assert.IsType(serviceType, instance);
 
@@ -78,6 +79,12 @@ namespace DryIoc.Wcf.Tests
             var sut = new DryIocInstanceProvider(_containerMock.Object, serviceType);
             Assert.Throws<ArgumentNullException>("instanceContext", () => sut.ReleaseInstance(null, new object()));
         }
-    }
 
+        [Fact]
+        public void RealeaseInstanceDoesNotThrowIfCurrentScopeIsNull()
+        {
+            var instanceProvider = new DryIocInstanceProvider(_containerMock.Object, typeof(DryIocInstanceProviderTests));
+            instanceProvider.ReleaseInstance(_instanceContext, new object());
+        }
+    }
 }

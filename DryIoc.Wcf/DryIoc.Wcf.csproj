@@ -16,14 +16,19 @@
     <Version>0.6.0</Version>
     <PackageId>DryIoc.Wcf.dll</PackageId>
     <Product>DryIoc.Wcf.dll</Product>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn />
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
-    <DebugType>full</DebugType>
-    <DebugSymbols>True</DebugSymbols>
+    <!-- Not setting DebugType to either full or pdbonly (they are equivalent) will
+         generate portable pdb's by default. Portable pdb's aren't supported by VS
+         coverage analysis and OpenCover/Cecil  -->
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="DryIoc.dll" Version="[2.10.0,3.0)" />

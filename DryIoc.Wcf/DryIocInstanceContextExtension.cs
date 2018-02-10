@@ -11,11 +11,11 @@ namespace DryIoc.Wcf {
             }
 
             if (extension.CurrentScopedContainer == null) {
-                extension.CurrentScopedContainer = container.OpenScope();
+                extension.CurrentScopedContainer = container.OpenScope(null, null);
                 return extension.CurrentScopedContainer;
             }
 
-            return extension.CurrentScopedContainer.OpenScope();
+            return extension.CurrentScopedContainer.OpenScope(null, null);
         }
 
         internal static IScope GetCurrentScope(this InstanceContext instanceContext) {

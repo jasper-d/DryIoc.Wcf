@@ -26,7 +26,7 @@ namespace DryIoc.Wcf {
         internal DryIocServiceHost(IContainer container, Type serviceAbstraction, Type implementationType, params Uri[] baseAddresses)
             : base(implementationType, baseAddresses) {
             _container = container ?? throw new ArgumentNullException(nameof(container));
-            _serviceAbstraction = serviceAbstraction ?? throw new ArgumentNullException(nameof(container));
+            _serviceAbstraction = serviceAbstraction ?? throw new ArgumentNullException(nameof(serviceAbstraction));
         }
 
         public IEnumerable<ContractDescription> GetImplementedContracts() => ImplementedContracts.Values;
