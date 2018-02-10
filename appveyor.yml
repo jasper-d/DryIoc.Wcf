@@ -8,7 +8,7 @@ environment:
     secure: anxbSCDlPmPM4yWn1LKFlXuXaTS4VX4gkby2vyjaK5xFemjhMgttyMmtwcIncFyg
 
 install:
-  - ps: Install-Phase.ps1
+  - ps: .\Install-Phase.ps1
 
 before_build:
   - cmd: nuget restore .\DryIoc.Wcf.sln -Verbosity detailed
@@ -42,7 +42,7 @@ deploy:
       DeployArtifacts: true
   - provider: GitHub
     description: 'Release'
-    release: %ReleaseVersion%
+    release: $(ReleaseVersion)
     auth_token:
       secure: K71ovddtT7BuOR1D1K9uVRdOT2+Apl6GdQjBYjUki/ySUX9EcWb2MNtupx5ymrkt
     artifact: /.*\.nupkg/

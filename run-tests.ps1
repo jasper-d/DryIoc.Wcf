@@ -1,4 +1,8 @@
-﻿$opencover = (Resolve-Path .\packages\OpenCover.*\tools\OpenCover.Console.exe)
+﻿if(!(Test-Path .\test-results.xml)){
+    New-Item -name test-results.xml
+}
+
+$opencover = (Resolve-Path .\packages\OpenCover.*\tools\OpenCover.Console.exe)
 $coveralls = (Resolve-Path .\packages\coveralls.io.*\tools\coveralls.net.exe)
 $xunit = (Resolve-Path .\packages\xunit.runner.console.*\tools\net4*\xunit.console.exe)
 $testResults = (Resolve-Path .\test-results.xml)
