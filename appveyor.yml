@@ -5,7 +5,7 @@ clone_depth: 5
 
 environment:
   COVERALLS_TOKEN:
-    secure: anxbSCDlPmPM4yWn1LKFlXuXaTS4VX4gkby2vyjaK5xFemjhMgttyMmtwcIncFyg
+    secure: O8YiS0Buu+lahKr+LploPPqJgaA90lTZAq9UuHcc2QIBP1FpY887cqnMaZ4QujSk
 
 install:
   - ps: .\Install-Phase.ps1
