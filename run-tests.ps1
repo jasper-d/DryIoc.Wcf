@@ -1,5 +1,6 @@
-﻿$opencover = (Resolve-path .\packages\OpenCover.*\tools\OpenCover.Console.exe)
-$xunit = (Resolve-path .\packages\xunit.runner.console.*\tools\net4*\xunit.console.exe)
+﻿$opencover = (Resolve-Path .\packages\OpenCover.*\tools\OpenCover.Console.exe)
+$coveralls = (Resolve-Path .\packages\coveralls.io.*\tools\coveralls.net.exe)
+$xunit = (Resolve-Path .\packages\xunit.runner.console.*\tools\net4*\xunit.console.exe)
 $testResults = (Resolve-Path .\test-results.xml)
 
 $port = 11119
@@ -10,9 +11,7 @@ If ([environment]::Is64BitOperatingSystem) {
 $appPath = (Resolve-path .\WcfSample.Service)
 $appPathBin = (Resolve-path .\WcfSample.Service\bin)
 $unitTestAppPath = (Resolve-path .\DryIoc.Wcf.Tests\bin\Release\DryIoc.Wcf.Tests.dll)
-#$unitTestAppPathDebug = (Resolve-path .\DryIoc.Wcf.Tests\bin\Debug\DryIoc.Wcf.Tests.dll);
 $integrationTestAppPath = (Resolve-path .\IntegrationTests\bin\Release\IntegrationTests.dll)
-#$integrationTestAppPathDebug = (Resolve-path .\IntegrationTests\bin\Debug\IntegrationTests.dll)
 
 $iisExpressSettings = @"
 IIS Express settings:
@@ -46,13 +45,12 @@ if($env:APPVEYOR_JOB_ID) {
 #Terminate build if tests fail
 if($xunitExitCode -ne 0) {
 	Write-Host "Test failed, terminating build" -ForegroundColor Yellow -BackgroundColor Red
-	#$host.SetShouldExit($xunitExitCode)
+	$host.SetShouldExit($xunitExitCode)
 }
 
 #Run OpenCover
 
 &$opencover -searchdirs:"$integrationTestAppPath" -register:user -filter:"+[DryIoc.Wcf]* -[DryIoc.Wcf.Test]*" -target:"$xunit" -targetargs:"$unitTestAppPath -noshadow -nologo" -output:coverage.xml
-
 
 $args = "-log:All -register:user -targetdir:`"$appPathBin`" -output:coverage.xml -filter:`"+[DryIoc.Wcf]* -[DryIoc.Wcf.Test]*`" -target:`"$iisExpressPath`" -targetargs:`"/port:$port /path:$appPath /systray:false`" -mergebyhash -mergeoutput"
 
@@ -62,4 +60,10 @@ Start-Sleep -s 5
 &$xunit $integrationTestAppPath
 stop-process -name "iisexpress"
 start-sleep -s 20
+
+if($LastExitCode -ne 0) {
+    Write-Host "Coverage analysis failed, terminating build" -ForegroundColor Yellow -BackgroundColor Red
+    $host.SetShouldExit($LastExitCode)
+} 
+
 write-host "Done testing"

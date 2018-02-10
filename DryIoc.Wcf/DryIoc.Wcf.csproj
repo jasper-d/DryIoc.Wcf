@@ -15,6 +15,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <Version>0.6.0</Version>
     <PackageId>DryIoc.Wcf.dll</PackageId>
+    <IsPackable>true</IsPackable>
     <Product>DryIoc.Wcf.dll</Product>
     <NoWarn />
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
