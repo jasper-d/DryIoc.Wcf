@@ -13,6 +13,7 @@ function TestVersionTag([string] $tag) {
 }
 
 function SetVersion([string] $projectFile, [string] $newVersion){
+    Write-Host "Setting csproj version"
     [xml]$xml = Get-Content $projectFile
     $propertyGroups = $xml.Project.PropertyGroup
 
@@ -23,6 +24,7 @@ function SetVersion([string] $projectFile, [string] $newVersion){
 }
 
 function SetReleaseVariable($newVersion){
+    Write-Host "Updating Build variables"
     Set-AppveyorBuildVariable -Name "DeployArtifacts" -Value "true"
     Set-AppveyorBuildVariable -Name "ReleaseVersion" -Value $newVersion
 }
@@ -30,8 +32,13 @@ function SetReleaseVariable($newVersion){
 function PrepareRelease([string] $projectFile){
     $commitHashInt = HashToRevision $env:APPVEYOR_REPO_COMMIT
 
+    Write-Host "Preparing release"
+    Write-Host "APPVEYOR_REPO_TAG: $($env:APPVEYOR_REPO_TAG)"
+    Write-Host "APPVEYOR_REPO_TAG_NAME: $($env:APPVEYOR_REPO_TAG_NAME)"
+
     if ($env:APPVEYOR_REPO_TAG -eq "true" -and (TestVersionTag $env:APPVEYOR_REPO_TAG_NAME)) {
         $newVersion = "$($env:APPVEYOR_REPO_TAG_NAME.TrimStart("v.")).$commitHashInt"
+        Write-Host "New version $($newVersion)"
         Update-AppveyorBuild -Version $newVersion
         SetVersion $projectFile $newVersion
         SetReleaseVariable $newVersion
