@@ -34,7 +34,7 @@ function PrepareRelease([string] $projectFile){
         $newVersion = "$($env:APPVEYOR_REPO_TAG_NAME.TrimStart("v.")).$commitHashInt"
         Update-AppveyorBuild -Version $newVersion
         SetVersion $projectFile $newVersion
-        SetReleaseVariable
+        SetReleaseVariable $newVersion
     }
     else
     {
