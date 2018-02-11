@@ -46,10 +46,12 @@ if($env:APPVEYOR_JOB_ID) {
     $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", $testResults)
 }
 
+Remove-Item $testResults -ErrorAction SilentlyContinue
+
 #Terminate build if tests fail
 if($xunitExitCode -ne 0) {
-	Write-Host "Test failed, terminating build" -ForegroundColor Yellow -BackgroundColor Red
-	$host.SetShouldExit($xunitExitCode)
+    Write-Host "Test failed, terminating build" -ForegroundColor Yellow -BackgroundColor Red
+    $host.SetShouldExit($xunitExitCode)
 }
 
 #Run OpenCover

@@ -1,4 +1,9 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/53lay7nusch1alma?svg=true)](https://ci.appveyor.com/project/jasper-d/dryioc-wcf) [![Coverage Status](https://coveralls.io/repos/github/jasper-d/DryIoc.Wcf/badge.svg)](https://coveralls.io/github/jasper-d/DryIoc.Wcf)
+
+
+[![Build status](https://img.shields.io/appveyor/ci/jasper-d/dryioc-wcf.svg?style=flat-square)](https://ci.appveyor.com/project/jasper-d/dryioc-wcf)
+[![AppVeyor tests](https://img.shields.io/appveyor/tests/jasper-d/dryioc-wcf.svg?style=flat-square)](https://ci.appveyor.com/project/jasper-d/dryioc-wcf/build/tests)
+[![Coverage Status](https://img.shields.io/coveralls/github/jasper-d/DryIoc.Wcf.svg?style=flat-square)](https://coveralls.io/github/jasper-d/DryIoc.Wcf)
+[![NuGet](https://img.shields.io/nuget/v/DryIoc.Wcf.dll.svg?style=flat-square)](https://www.nuget.org/packages/DryIoc.Wcf.dll/)
 
 WCF integration for DryIoc, ported from the WCF integration for [SimpleInjector](https://github.com/simpleinjector/SimpleInjector).
 
