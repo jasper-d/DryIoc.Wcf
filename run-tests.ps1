@@ -40,7 +40,7 @@ write-host "stop iis express"  -foregroundcolor magenta
 stop-process -name "iisexpress"
 
 #Upload test results when running on Appveyor
-if($env:APPVEYOR_JOB_ID) {
+if($env:APPVEYOR_JOB_ID -and $false) {
 	Write-Host "Uploading test results..."  -ForegroundColor Magenta
     $wc = New-Object 'System.Net.WebClient'
     $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", $testResults)
