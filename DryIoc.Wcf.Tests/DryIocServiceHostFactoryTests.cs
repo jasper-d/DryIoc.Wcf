@@ -6,6 +6,7 @@ using System.Reflection;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using FastExpressionCompiler;
 using Moq;
 using Xunit;
 
@@ -117,7 +118,7 @@ namespace DryIoc.Wcf.Tests
 
         public class FactoryStub : Factory
         {
-            public override Expression CreateExpressionOrDefault(Request request)
+            public override ExpressionInfo CreateExpressionOrDefault(Request request)
             {
                 return null;
             }

@@ -9,14 +9,14 @@ namespace DryIoc.Wcf.Tests
     public class DryIocInstanceProviderTests
     {
         private readonly Mock<IContainer> _containerMock;
-        private readonly Mock<IContainer> _newContainerMock;
+        private readonly Mock<IResolverContext> _newContainerMock;
         private readonly Mock<ServiceHostBase> _serviceHostMock;
         private readonly InstanceContext _instanceContext;
 
         public DryIocInstanceProviderTests()
         {
             _containerMock = new Mock<IContainer>(MockBehavior.Strict);
-            _newContainerMock = new Mock<IContainer>(MockBehavior.Strict);
+            _newContainerMock = new Mock<IResolverContext>(MockBehavior.Strict);
             _serviceHostMock = new Mock<ServiceHostBase>(MockBehavior.Strict);
             _instanceContext = new InstanceContext(_serviceHostMock.Object);
         }
@@ -42,7 +42,7 @@ namespace DryIoc.Wcf.Tests
             var resolvedObject = string.Empty;
             var message = new Mock<Message>(MockBehavior.Loose).Object;
 
-            _containerMock.Setup(c => c.OpenScope(null, null)).Returns(_newContainerMock.Object);
+            _containerMock.Setup(c => c.OpenScope(null, false)).Returns(_newContainerMock.Object);
             _newContainerMock.Setup(c => c.Resolve(serviceType, false)).Returns(resolvedObject);
 
             var sut = new DryIocInstanceProvider(_containerMock.Object, serviceType);
@@ -50,7 +50,7 @@ namespace DryIoc.Wcf.Tests
             Assert.Equal(resolvedObject, instance);
             Assert.IsType(serviceType, instance);
 
-            _containerMock.Verify(c => c.OpenScope(null, null), Times.Once);
+            _containerMock.Verify(c => c.OpenScope(null, false), Times.Once);
             _newContainerMock.Verify(c => c.Resolve(serviceType, false), Times.Once);
         }
 
@@ -60,14 +60,14 @@ namespace DryIoc.Wcf.Tests
             var serviceType = typeof(string);
             var resolvedObject = string.Empty;
 
-            _containerMock.Setup(c => c.OpenScope(null, null)).Returns(_newContainerMock.Object);
+            _containerMock.Setup(c => c.OpenScope(null, false)).Returns(_newContainerMock.Object);
             _newContainerMock.Setup(c => c.Resolve(serviceType, false)).Throws<InvalidOperationException>();
             _newContainerMock.Setup(c => c.Dispose());
 
             var sut = new DryIocInstanceProvider(_containerMock.Object, serviceType);
             Assert.Throws<InvalidOperationException>(() => sut.GetInstance(_instanceContext));
 
-            _containerMock.Verify(c => c.OpenScope(null, null), Times.Once);
+            _containerMock.Verify(c => c.OpenScope(null, false), Times.Once);
             _newContainerMock.Verify(c => c.Resolve(serviceType, false), Times.Once);
             _newContainerMock.Verify(c => c.Dispose(), Times.Once);
         }

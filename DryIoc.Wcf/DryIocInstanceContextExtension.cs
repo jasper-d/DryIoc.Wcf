@@ -3,19 +3,19 @@
 namespace DryIoc.Wcf {
     internal static class InstanceContextExtension {
 
-        internal static IContainer OpenScope(this InstanceContext instanceContext, IContainer container) {
+        internal static IResolverContext OpenScope(this InstanceContext instanceContext, IContainer container) {
             var extension = instanceContext.Extensions.Find<DryIocInstanceContextExtension>();
 
             if (extension == null) {
                 instanceContext.Extensions.Add(extension = new DryIocInstanceContextExtension());
             }
 
-            if (extension.CurrentScopedContainer == null) {
-                extension.CurrentScopedContainer = container.OpenScope(null, null);
-                return extension.CurrentScopedContainer;
+            if (extension.ResolverContext == null) {
+                extension.ResolverContext = container.OpenScope(null, false);
+                return extension.ResolverContext;
             }
 
-            return extension.CurrentScopedContainer.OpenScope(null, null);
+            return extension.ResolverContext.OpenScope(null, false);
         }
 
         internal static IScope GetCurrentScope(this InstanceContext instanceContext) {
@@ -25,11 +25,11 @@ namespace DryIoc.Wcf {
 
             var extension = instanceContext.Extensions.Find<DryIocInstanceContextExtension>();
 
-            return extension?.CurrentScopedContainer.GetCurrentScope();
+            return extension?.ResolverContext.CurrentScope;
         }
 
         private sealed class DryIocInstanceContextExtension : IExtension<InstanceContext> {
-            internal IContainer CurrentScopedContainer { get; set; }
+            internal IResolverContext ResolverContext { get; set; }
 
             public void Attach(InstanceContext owner) {
             }
