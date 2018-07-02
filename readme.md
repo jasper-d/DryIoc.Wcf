@@ -7,4 +7,7 @@
 
 WCF integration for DryIoc, ported from the WCF integration for [SimpleInjector](https://github.com/simpleinjector/SimpleInjector).
 
+Version [0.6.x](https://www.nuget.org/packages/DryIoc.Wcf.dll/0.6.3.52944) for DryIoc v.[2.10.0,3.0)
+Version [1.x](https://www.nuget.org/packages/DryIoc.Wcf.dll/1.0.0) for DryIoc v.[3.0.0,4.0)
+
 See WcfSample.Service for usage example.
