@@ -10,7 +10,7 @@ namespace WcfSample.Service {
         protected void Application_Start(object sender, EventArgs e) {
             // Create the container as usual.
             var container = new Container(rules => 
-                rules.WithDefaultReuseInsteadOfTransient(Reuse.InCurrentScope), scopeContext: null);
+                rules.WithDefaultReuse(Reuse.InCurrentScope), scopeContext: null);
 
             container.Register(typeof(ISampleService), typeof(SampleService), Reuse.Transient);
             container.Register(typeof(IFoo), typeof(Foo));

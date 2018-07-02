@@ -18,18 +18,19 @@ namespace DryIoc.Wcf {
                 throw new ArgumentNullException(nameof(instanceContext));
             }
 
-            var scopedContainer = instanceContext.OpenScope(_container);
+            var resolverContext = instanceContext.OpenScope(_container);
 
             try {
-                return scopedContainer.Resolve(_serviceType, false);
+                return resolverContext.Resolve(_serviceType, false);
             } catch {
-                scopedContainer.Dispose();
+                resolverContext.Dispose();
                 throw;
             }
             
         }
 
-        public object GetInstance(InstanceContext instanceContext, Message message) => GetInstance(instanceContext);
+        public object GetInstance(InstanceContext instanceContext, Message message) =>
+            GetInstance(instanceContext);
 
         public void ReleaseInstance(InstanceContext instanceContext, object instance) {
             if(instanceContext == null) {
