@@ -1,7 +1,6 @@
 
 
 [![Build status](https://ci.appveyor.com/api/projects/status/github/jasper-d/DryIoc.Wcf?branch=master&svg=true)](https://ci.appveyor.com/project/jasper-d/dryioc-wcf)
-[![AppVeyor tests](https://img.shields.io/appveyor/tests/jasper-d/dryioc-wcf.svg)](https://ci.appveyor.com/project/jasper-d/dryioc-wcf/build/tests)
 [![Coverage Status](https://coveralls.io/repos/github/jasper-d/DryIoc.Wcf/badge.svg?branch=master)](https://coveralls.io/github/jasper-d/DryIoc.Wcf?branch=master)
 [![NuGet](https://img.shields.io/nuget/v/DryIoc.Wcf.dll.svg)](https://www.nuget.org/packages/DryIoc.Wcf.dll/)
 
