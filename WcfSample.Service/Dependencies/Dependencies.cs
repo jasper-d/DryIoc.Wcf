@@ -1,6 +1,6 @@
-﻿using DryIoc;
 using System;
 using System.Threading.Tasks;
+using DryIoc;
 
 namespace WcfSample.Service.Dependencies {
     public interface IFoo {

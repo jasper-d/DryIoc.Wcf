@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -7,28 +7,23 @@ using System.ServiceModel.Dispatcher;
 using Moq;
 using Xunit;
 
-namespace DryIoc.Wcf.Tests
-{
-    public class DryIocServiceBehaviorTests
-    {
+namespace DryIoc.Wcf.Tests {
+    public class DryIocServiceBehaviorTests {
         private readonly Mock<IContainer> _containerMock;
         private readonly Mock<ServiceHostBase> _serviceHostMock;
 
-        public DryIocServiceBehaviorTests()
-        {
+        public DryIocServiceBehaviorTests() {
             _containerMock = new Mock<IContainer>(MockBehavior.Strict);
             _serviceHostMock = new Mock<ServiceHostBase>(MockBehavior.Strict);
         }
 
         [Fact]
-        public void DryIocServiceBehaviorCtorThrowsNullArgumentExceptionForNullArguments()
-        {
+        public void DryIocServiceBehaviorCtorThrowsNullArgumentExceptionForNullArguments() {
             Assert.Throws<ArgumentNullException>("container", () => new DryIocServiceBehavior(null));
         }
 
         [Fact]
-        public void ApplyDispatchBehaviorThrowsNullArgumentExceptionForNullArguments()
-        {
+        public void ApplyDispatchBehaviorThrowsNullArgumentExceptionForNullArguments() {
             var sut = new DryIocServiceBehavior(_containerMock.Object);
             var serviceDescription = new ServiceDescription();
 
@@ -37,8 +32,7 @@ namespace DryIoc.Wcf.Tests
         }
 
         [Fact]
-        public void InstanceProviderIsSetForImplementedContracts()
-        {
+        public void InstanceProviderIsSetForImplementedContracts() {
             var sut = new DryIocServiceBehavior(_containerMock.Object);
             var serviceEndpoints = new[] {
                 new ServiceEndpoint(new ContractDescription(nameof(String)) { ContractType = typeof(String)})
@@ -48,7 +42,7 @@ namespace DryIoc.Wcf.Tests
 
             var channelListener = new Mock<IChannelListener>();
             var channelDispatcher = CreateChannelDispatchers();
-            
+
             _serviceHostMock.Object.ChannelDispatchers.Add(channelDispatcher);
 
             sut.ApplyDispatchBehavior(serviceDescription, _serviceHostMock.Object);
@@ -58,8 +52,7 @@ namespace DryIoc.Wcf.Tests
             Assert.True(channelDispatcher.Endpoints.Where(e => e.ContractName != nameof(String)).Select(e => e.DispatchRuntime).All(dr => dr.InstanceProvider == null));
         }
 
-        private static ChannelDispatcher CreateChannelDispatchers()
-        {
+        private static ChannelDispatcher CreateChannelDispatchers() {
             var channelListener = new Mock<IChannelListener>();
             var channelDispatcher = new ChannelDispatcher(channelListener.Object);
 

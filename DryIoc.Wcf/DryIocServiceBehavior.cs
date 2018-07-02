@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -17,14 +17,14 @@ namespace DryIoc.Wcf {
             _container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
-        public void AddBindingParameters(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase, Collection<ServiceEndpoint> endpoints, BindingParameterCollection bindingParameters) {}
+        public void AddBindingParameters(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase, Collection<ServiceEndpoint> endpoints, BindingParameterCollection bindingParameters) { }
 
         public void ApplyDispatchBehavior(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase) {
-            if(serviceDescription == null) {
+            if (serviceDescription == null) {
                 throw new ArgumentNullException(nameof(serviceDescription));
             }
 
-            if(serviceHostBase == null) {
+            if (serviceHostBase == null) {
                 throw new ArgumentNullException(nameof(serviceHostBase));
             }
 
@@ -36,7 +36,7 @@ namespace DryIoc.Wcf {
             }
         }
 
-        public void Validate(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase) {}
+        public void Validate(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase) { }
 
         private IEnumerable<EndpointDispatcher> GetEndpointDispatchersForImplementedContracts(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase) {
             var implementedContracts = (

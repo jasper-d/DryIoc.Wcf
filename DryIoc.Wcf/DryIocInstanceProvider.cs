@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Dispatcher;
@@ -26,14 +26,14 @@ namespace DryIoc.Wcf {
                 resolverContext.Dispose();
                 throw;
             }
-            
+
         }
 
         public object GetInstance(InstanceContext instanceContext, Message message) =>
             GetInstance(instanceContext);
 
         public void ReleaseInstance(InstanceContext instanceContext, object instance) {
-            if(instanceContext == null) {
+            if (instanceContext == null) {
                 throw new ArgumentNullException(nameof(instanceContext));
             }
 

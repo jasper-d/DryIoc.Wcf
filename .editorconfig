@@ -1,0 +1,129 @@
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+indent_style = space
+indent_size = 4
+
+[*.{json,csproj,props,targets,xml,config,yml,yaml,gitconfig,gitattributes}]
+indent_size = 2
+
+[*.cs]
+# Prefer "var" everywhere
+csharp_style_var_for_built_in_types                   = true : suggestion
+csharp_style_var_when_type_is_apparent                = true : suggestion
+csharp_style_var_elsewhere                            = true : suggestion
+
+# Newline settings
+csharp_new_line_before_open_brace                     = none #K&R Style (what else?)
+csharp_new_line_before_else                           = false
+csharp_new_line_before_catch                          = false
+csharp_new_line_before_finally                        = false
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_members_in_anonymous_types     = true
+csharp_new_line_between_query_expression_clauses      = true
+
+# Sort using and Import directives with System.* appearing first
+dotnet_sort_system_directives_first                        = true
+
+# Identing
+csharp_indent_case_contents = true
+csharp_indent_switch_labels = true
+
+# Spaces
+csharp_space_after_cast                                            = false
+csharp_space_after_keywords_in_control_flow_statements             = false
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_method_call_parameter_list_parentheses        = false
+
+# Line breaks
+csharp_preserve_single_line_statements = false
+csharp_preserve_single_line_blocks = true
+
+# Avoid "this." if not necessary
+dotnet_style_qualification_for_field                       = false : suggestion
+dotnet_style_qualification_for_property                    = false : suggestion
+dotnet_style_qualification_for_method                      = false : suggestion
+dotnet_style_qualification_for_event                       = false : suggestion
+
+# Use language keywords instead of framework type names for type references
+dotnet_style_predefined_type_for_locals_parameters_members = true : suggestion
+dotnet_style_predefined_type_for_member_access             = false : suggestion
+
+# Suggest more modern language features when available
+csharp_style_pattern_matching_over_is_with_cast_check = true : none
+csharp_style_pattern_matching_over_as_with_null_check = true : none
+csharp_style_inlined_variable_declaration             = true : none
+csharp_style_throw_expression                         = true : none
+csharp_style_conditional_delegate_call                = true : none
+
+dotnet_style_object_initializer                            = true : suggestion
+dotnet_style_collection_initializer                        = true : suggestion
+dotnet_style_coalesce_expression                           = true : suggestion
+dotnet_style_null_propagation                              = true : suggestion
+dotnet_style_explicit_tuple_names                          = true : suggestion
+
+# PascalCase style
+dotnet_naming_style.pascal_case_style.capitalization  = pascal_case
+
+# All caps style
+dotnet_naming_style.all_caps.capitalization = all_upper
+dotnet_naming_style.all_caps.word_separator = _
+
+# Interface style
+dotnet_naming_style.interface_style.capitalization  = pascal_case
+dotnet_naming_style.interface_style.required_prefix = I
+
+# Private field style
+dotnet_naming_style.private_fields_style.capitalization  = camel_case
+dotnet_naming_style.private_fields_style.required_prefix = _
+
+# Public members must be capitalized (public_members_must_be_capitalized)
+[*.cs]
+dotnet_naming_rule.public_members_must_be_capitalized.symbols   = public_symbols
+dotnet_naming_symbols.public_symbols.applicable_kinds           = property,method,field,event,delegate
+dotnet_naming_symbols.public_symbols.applicable_accessibilities = public,protected,internal
+dotnet_naming_rule.public_members_must_be_capitalized.style     = pascal_case_style
+dotnet_naming_rule.public_members_must_be_capitalized.severity  = warning
+
+# Private fields must be prefixed with _ _myPrivateField
+[*.cs]
+dotnet_naming_rule.private_fields_prefixed.symbols              = private_fields
+dotnet_naming_symbols.private_fields.applicable_kinds           = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_rule.private_fields_prefixed.style                = private_fields_style
+dotnet_naming_rule.private_fields_prefixed.severity             = warning
+
+
+# Static members must be capitalized (class_must_be_capitalized)
+#[*.cs]
+dotnet_naming_rule.static_members_must_be_capitalized.symbols            = static_symbols
+dotnet_naming_symbols.static_symbols.applicable_kinds                    = field
+dotnet_naming_symbols.static_symbols.required_modifiers                  = static
+dotnet_naming_rule.static_members_must_be_capitalized.style              = pascal_case_style
+dotnet_naming_rule.static_members_must_be_capitalized.severity           = warning
+
+# Constants must be all caps (constants_must_be_all_caps) MY_CONSTANT
+[*.cs]
+dotnet_naming_rule.constants_must_be_all_caps.symbols            = constant_fields
+dotnet_naming_symbols.constant_fields.applicable_kinds           = field
+dotnet_naming_symbols.constant_fields.required_modifiers         = const
+dotnet_naming_rule.constants_must_be_all_caps.style              = all_caps
+dotnet_naming_rule.constants_must_be_all_caps.severity           = warning
+
+# Class, Struct, Enum, Method must be captilized (class_must_be_capitalized)
+[*.cs]
+dotnet_naming_rule.class_struct_enum_method_must_be_capitalized.symbols   = class_struct_enum_method
+dotnet_naming_symbols.class_struct_enum_method.applicable_kinds           = class,struct,enum,method
+dotnet_naming_symbols.class_struct_enum_method.applicable_accessibilities = *
+dotnet_naming_rule.class_struct_enum_method_must_be_capitalized.style     = pascal_case_style
+dotnet_naming_rule.class_struct_enum_method_must_be_capitalized.severity  = warning
+
+# Interface identifier must start with capital I (interface_I_prefix) e.g. IFoo
+[*.cs]
+dotnet_naming_rule.interface_I_prefix.symbols                             = interface
+dotnet_naming_symbols.interface.applicable_kinds                          = interface
+dotnet_naming_symbols.class_struct_enum_method.applicable_accessibilities = *
+dotnet_naming_rule.interface_I_prefix.style                               = interface_style
+dotnet_naming_rule.interface_I_prefix.severity                            = warning

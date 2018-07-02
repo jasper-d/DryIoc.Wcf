@@ -1,29 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+using System;
 using System.Reflection;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using FastExpressionCompiler;
 using Moq;
 using Xunit;
 
-namespace DryIoc.Wcf.Tests
-{
-    public class DryIocServiceHostFactoryTests
-    {
+namespace DryIoc.Wcf.Tests {
+    public class DryIocServiceHostFactoryTests {
         private readonly Mock<IContainer> _container;
 
-        public DryIocServiceHostFactoryTests()
-        {
+        public DryIocServiceHostFactoryTests() {
             _container = new Mock<IContainer>(MockBehavior.Strict);
         }
 
         [Fact]
-        public void SetContainerThrowsIfContainerIsAlreadySet()
-        {
+        public void SetContainerThrowsIfContainerIsAlreadySet() {
             SetContainer(null);
 
             DryIocServiceHostFactory.SetContainer(_container.Object);
@@ -31,31 +22,27 @@ namespace DryIoc.Wcf.Tests
         }
 
         [Fact]
-        public void SetContainerThrowsIfContainerIsNull()
-        {
+        public void SetContainerThrowsIfContainerIsNull() {
             SetContainer(null);
             Assert.Throws<ArgumentNullException>("container", () => DryIocServiceHostFactory.SetContainer(null));
         }
 
         [Fact]
-        public void CreateServiceHostThrowsIfContainerIsNull()
-        {
+        public void CreateServiceHostThrowsIfContainerIsNull() {
             SetContainer(null);
             var fake = new ServiceHostFactoryStub();
             Assert.Throws<InvalidOperationException>(() => fake.CallCreateServiceHost(typeof(ServiceHostFactoryStub), null));
         }
 
         [Fact]
-        public void CreateServiceHostThrowsIfContractTypeIsNull()
-        {
+        public void CreateServiceHostThrowsIfContractTypeIsNull() {
             SetContainer(_container.Object);
             var fake = new ServiceHostFactoryStub();
             Assert.Throws<ArgumentNullException>("contractType", () => fake.CallCreateServiceHost(null, null));
         }
 
         [Fact]
-        public void SingletonServicesAreCreatedAsSingletonAndSetInServiceHost()
-        {
+        public void SingletonServicesAreCreatedAsSingletonAndSetInServiceHost() {
             var contractType = typeof(IService);
             var stub = new ServiceHostFactoryStub();
             var addresses = new Uri[0];
@@ -68,8 +55,7 @@ namespace DryIoc.Wcf.Tests
         }
 
         [Fact]
-        public void ServiceHostFactoryThrowsIfSingletonServiceIsNotRegisteredAsSingleton()
-        {
+        public void ServiceHostFactoryThrowsIfSingletonServiceIsNotRegisteredAsSingleton() {
             var contractType = typeof(IService);
             var stub = new ServiceHostFactoryStub();
             var addresses = new Uri[0];
@@ -81,8 +67,7 @@ namespace DryIoc.Wcf.Tests
         }
 
         [Fact]
-        public void NonSingletonServicesAreNotCreatedAsSingletonAndNotSetInServiceHost()
-        {
+        public void NonSingletonServicesAreNotCreatedAsSingletonAndNotSetInServiceHost() {
             var contractType = typeof(IService);
             var addresses = new Uri[0];
             var stub = new ServiceHostFactoryStub();
@@ -94,8 +79,7 @@ namespace DryIoc.Wcf.Tests
             Assert.Null(createdServiceHost.SingletonInstance);
         }
 
-        private (T instance, Mock<FactoryStub> factory) SetupFactoryForSingletonResolution<T>(Type contractType, Type implType) where T : new()
-        {
+        private (T instance, Mock<FactoryStub> factory) SetupFactoryForSingletonResolution<T>(Type contractType, Type implType) where T : new() {
             SetContainer(_container.Object);
             T instance = new T();
             var factory = new Mock<FactoryStub>();
@@ -108,24 +92,19 @@ namespace DryIoc.Wcf.Tests
             return (instance, factory);
         }
 
-        public class ServiceHostFactoryStub : DryIocServiceHostFactory
-        {
-            public ServiceHost CallCreateServiceHost(Type contractType, Uri[] baseAddresses)
-            {
+        public class ServiceHostFactoryStub : DryIocServiceHostFactory {
+            public ServiceHost CallCreateServiceHost(Type contractType, Uri[] baseAddresses) {
                 return base.CreateServiceHost(contractType, baseAddresses);
             }
         }
 
-        public class FactoryStub : Factory
-        {
-            public override ExpressionInfo CreateExpressionOrDefault(Request request)
-            {
+        public class FactoryStub : Factory {
+            public override ExpressionInfo CreateExpressionOrDefault(Request request) {
                 return null;
             }
         }
 
-        private void SetContainer(IContainer container)
-        {
+        private void SetContainer(IContainer container) {
             var fieldInfo = typeof(DryIocServiceHostFactory).GetField("s_container", BindingFlags.NonPublic | BindingFlags.Static);
             fieldInfo.SetValue(null, container);
         }

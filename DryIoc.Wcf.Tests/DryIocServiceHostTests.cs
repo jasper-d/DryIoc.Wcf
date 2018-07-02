@@ -1,25 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using System.ServiceModel;
-using System.ServiceModel.Description;
-using System.Text;
-using System.Threading.Tasks;
 using Moq;
-using Moq.Protected;
 using Xunit;
 
-namespace DryIoc.Wcf.Tests
-{
-    public class DryIocServiceHostTests
-    {
+namespace DryIoc.Wcf.Tests {
+    public class DryIocServiceHostTests {
         private readonly Mock<IContainer> _containerMock;
         private readonly Mock<IContainer> _newContainerMock;
         private readonly Mock<ServiceHostBase> _serviceHostMock;
         private readonly InstanceContext _instanceContext;
 
-        public DryIocServiceHostTests()
-        {
+        public DryIocServiceHostTests() {
             _containerMock = new Mock<IContainer>(MockBehavior.Strict);
             _newContainerMock = new Mock<IContainer>(MockBehavior.Strict);
             _serviceHostMock = new Mock<ServiceHostBase>(MockBehavior.Strict);
@@ -27,16 +19,14 @@ namespace DryIoc.Wcf.Tests
         }
 
         [Fact]
-        public void DryIocServiceHostCtorsThrowForNullArguments()
-        {
+        public void DryIocServiceHostCtorsThrowForNullArguments() {
             Assert.Throws<ArgumentNullException>("container", () => new DryIocServiceHost(null, typeof(DryIocServiceHostTests)));
             Assert.Throws<ArgumentNullException>("container", () => new DryIocServiceHost(null, new object()));
             Assert.Throws<ArgumentNullException>("singletonInstance", () => new DryIocServiceHost(_containerMock.Object, default(object)));
         }
 
         [Fact]
-        public void OnOpeningAddsDryIocServiceBehavior()
-        {
+        public void OnOpeningAddsDryIocServiceBehavior() {
             var serviceHost = new ServiceHostStub(_containerMock.Object, typeof(DryIocServiceHostTests), new Uri[0]);
             var behaviorCount = serviceHost.Description.Behaviors.Count;
 
@@ -47,14 +37,11 @@ namespace DryIoc.Wcf.Tests
             Assert.Single(dryIocBehaviors);
         }
 
-        private class ServiceHostStub : DryIocServiceHost
-        {
-            public ServiceHostStub(IContainer container, Type serviceType, params Uri[] baseAddresses) : base(container, serviceType, baseAddresses)
-            {
+        private class ServiceHostStub : DryIocServiceHost {
+            public ServiceHostStub(IContainer container, Type serviceType, params Uri[] baseAddresses) : base(container, serviceType, baseAddresses) {
             }
 
-            public void CallOnOpening()
-            {
+            public void CallOnOpening() {
                 base.OnOpening();
             }
         }

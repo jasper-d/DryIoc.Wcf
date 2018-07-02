@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Description;
@@ -13,9 +13,7 @@ namespace DryIoc.Wcf {
             _container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
-        public DryIocServiceHost(IContainer container, object singletonInstance, params Uri[] baseAddresses)
-            : base(singletonInstance, baseAddresses)
-        {
+        public DryIocServiceHost(IContainer container, object singletonInstance, params Uri[] baseAddresses) : base(singletonInstance, baseAddresses) {
             if (singletonInstance == null) {
                 throw new ArgumentNullException(nameof(singletonInstance));
             }
@@ -23,8 +21,7 @@ namespace DryIoc.Wcf {
             _container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
-        internal DryIocServiceHost(IContainer container, Type serviceAbstraction, Type implementationType, params Uri[] baseAddresses)
-            : base(implementationType, baseAddresses) {
+        internal DryIocServiceHost(IContainer container, Type serviceAbstraction, Type implementationType, params Uri[] baseAddresses) : base(implementationType, baseAddresses) {
             _container = container ?? throw new ArgumentNullException(nameof(container));
             _serviceAbstraction = serviceAbstraction ?? throw new ArgumentNullException(nameof(serviceAbstraction));
         }

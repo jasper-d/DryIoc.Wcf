@@ -1,4 +1,4 @@
-﻿using System.ServiceModel;
+using System.ServiceModel;
 
 namespace DryIoc.Wcf {
     internal static class InstanceContextExtension {

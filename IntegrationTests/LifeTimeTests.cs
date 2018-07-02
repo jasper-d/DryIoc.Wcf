@@ -1,10 +1,9 @@
-﻿using IntegrationTests.ServiceReference;
 using System;
 using System.Threading.Tasks;
+using IntegrationTests.ServiceReference;
 using Xunit;
 
-namespace IntegrationTests
-{
+namespace IntegrationTests {
     public class LifeTimeTests : IDisposable {
         private SampleServiceClient _service;
 

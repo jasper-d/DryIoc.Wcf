@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
@@ -18,11 +18,11 @@ namespace DryIoc.Wcf {
             serviceType.GetServiceBehaviorAttribute()?.InstanceContextMode == InstanceContextMode.Single;
 
         protected override ServiceHost CreateServiceHost(Type contractType, Uri[] baseAddresses) {
-            if(contractType == null) {
+            if (contractType == null) {
                 throw new ArgumentNullException(nameof(contractType));
             }
 
-            if(s_container == null) {
+            if (s_container == null) {
                 throw new InvalidOperationException($"The operation failed. Please call the {typeof(DryIocServiceHostFactory).FullName}.{nameof(SetContainer)} method " +
                         $"supplying the application's {typeof(IContainer).FullName} instance during " +
                         "application startup (for instance inside the Application_Start event of the Global.asax). " +
