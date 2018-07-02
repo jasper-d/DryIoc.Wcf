@@ -63,7 +63,7 @@ namespace DryIoc.Wcf.Tests
             factory.SetupGet(f => f.Reuse).Returns(Reuse.Singleton);
 
             var createdServiceHost = stub.CallCreateServiceHost(contractType, addresses);
-            _container.Verify(c => c.Resolve(contractType, false), Times.Once);
+            _container.Verify(c => c.Resolve(contractType, IfUnresolved.Throw), Times.Once);
             Assert.Same(instance, createdServiceHost.SingletonInstance);
         }
 
@@ -77,7 +77,7 @@ namespace DryIoc.Wcf.Tests
 
             Assert.Throws<InvalidOperationException>(() => stub.CallCreateServiceHost(contractType, addresses));
 
-            _container.Verify(c => c.Resolve(contractType, false), Times.Never);
+            _container.Verify(c => c.Resolve(contractType, IfUnresolved.Throw), Times.Never);
         }
 
         [Fact]
@@ -90,7 +90,7 @@ namespace DryIoc.Wcf.Tests
 
             var createdServiceHost = stub.CallCreateServiceHost(contractType, addresses);
 
-            _container.Verify(c => c.Resolve(contractType, false), Times.Never);
+            _container.Verify(c => c.Resolve(contractType, IfUnresolved.Throw), Times.Never);
             Assert.Null(createdServiceHost.SingletonInstance);
         }
 
@@ -103,7 +103,7 @@ namespace DryIoc.Wcf.Tests
             factory.SetupGet(f => f.Reuse).Returns(Reuse.InThread);
             var serviceRegistration = new ServiceRegistrationInfo() { Factory = factory.Object, ServiceType = contractType };
             _container.Setup(c => c.GetServiceRegistrations()).Returns(new[] { serviceRegistration });
-            _container.Setup(c => c.Resolve(contractType, false)).Returns(instance);
+            _container.Setup(c => c.Resolve(contractType, IfUnresolved.Throw)).Returns(instance);
 
             return (instance, factory);
         }

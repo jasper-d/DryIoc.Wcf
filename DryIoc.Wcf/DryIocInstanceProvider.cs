@@ -29,7 +29,8 @@ namespace DryIoc.Wcf {
             
         }
 
-        public object GetInstance(InstanceContext instanceContext, Message message) => GetInstance(instanceContext);
+        public object GetInstance(InstanceContext instanceContext, Message message) =>
+            GetInstance(instanceContext);
 
         public void ReleaseInstance(InstanceContext instanceContext, object instance) {
             if(instanceContext == null) {
