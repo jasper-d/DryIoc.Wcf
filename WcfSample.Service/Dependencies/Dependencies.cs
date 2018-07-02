@@ -1,82 +1,73 @@
 ﻿using DryIoc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace WcfSample.Service.Dependencies {
     public interface IFoo {
         IBar Bar { get; }
 
-        Guid GetHash();
+        Guid GetId();
     }
 
     public class Foo : IFoo {
-        private readonly Guid _hash;
-        private IBar _bar;
+        private readonly Guid _id;
 
-        public IBar Bar { get { return _bar; } }
-
+        public IBar Bar { get; }
 
 
         public Foo(IBar bar) {
-            _hash = Guid.NewGuid();
-            if (bar == null) {
-                throw new ArgumentNullException(nameof(bar));
-            }
-
-            _bar = bar;
+            _id = Guid.NewGuid();
+            Bar = bar ?? throw new ArgumentNullException(nameof(bar));
         }
 
-        public Guid GetHash() {
-            return _hash;
+        public Guid GetId() {
+            return _id;
         }
     }
 
     public interface IBar {
-        Guid GetHash();
+        Guid GetId();
     }
 
     public class Bar : IBar {
-        private readonly Guid _hash;
+        private readonly Guid _id;
 
         public Bar() {
-            _hash = Guid.NewGuid();
+            _id = Guid.NewGuid();
         }
 
-        public Guid GetHash() {
-            return _hash;
+        public Guid GetId() {
+            return _id;
         }
     }
 
     public interface ISingleton {
-        Guid GetHash();
+        Guid GetId();
     }
     public class Singleton : ISingleton {
-        private readonly Guid _hash;
+        private readonly Guid _id;
 
         public Singleton() {
-            _hash = Guid.NewGuid();
+            _id = Guid.NewGuid();
         }
 
-        public Guid GetHash() {
-            return _hash;
+        public Guid GetId() {
+            return _id;
         }
     };
 
     public interface ITransient {
-        Guid GetHash();
+        Guid GetId();
     }
     public class Transient : ITransient {
-        private readonly Guid _hash;
+        private readonly Guid _id;
 
         public Transient() {
-            _hash = Guid.NewGuid();
+            _id = Guid.NewGuid();
         }
 
-        public Guid GetHash() {
-            return _hash;
+        public Guid GetId() {
+            return _id;
         }
     }
 
@@ -89,11 +80,7 @@ namespace WcfSample.Service.Dependencies {
         private IContainer _container;
 
         public AsyncClass(IContainer container) {
-            if (container == null) {
-                throw new ArgumentNullException(nameof(container));
-            }
-
-            _container = container;
+            _container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
         public async Task<IBar> ResolveAsync() {

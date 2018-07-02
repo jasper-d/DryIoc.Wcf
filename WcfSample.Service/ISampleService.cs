@@ -10,19 +10,19 @@ namespace WcfSample.Service {
         string GetData(int value);
 
         [OperationContract]
-        Guid GetHashCodeOfFoo();
+        Guid GetIdOfFoo();
 
         [OperationContract]
-        Guid GetHashCodeOfBar();
+        Guid GetIdOfBar();
 
         [OperationContract]
-        Guid GetHashCodeOfSingleton();
+        Guid GetIdOfSingleton();
 
         [OperationContract]
-        Guid GetHashCodeOfTransient();
+        Guid GetIdOfTransient();
 
         [OperationContract]
-        Guid GetHashCodeOfSelf();
+        Guid GetIdOfSelf();
 
         [OperationContract]
         bool BarEqualsFooBar();

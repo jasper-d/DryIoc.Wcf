@@ -15,63 +15,63 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHashCodeOfFoo">
+  <xs:element name="GetIdOfFoo">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHashCodeOfFooResponse">
+  <xs:element name="GetIdOfFooResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetHashCodeOfFooResult" type="q1:guid" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetIdOfFooResult" type="q1:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHashCodeOfBar">
+  <xs:element name="GetIdOfBar">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHashCodeOfBarResponse">
+  <xs:element name="GetIdOfBarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetHashCodeOfBarResult" type="q2:guid" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetIdOfBarResult" type="q2:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHashCodeOfSingleton">
+  <xs:element name="GetIdOfSingleton">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHashCodeOfSingletonResponse">
+  <xs:element name="GetIdOfSingletonResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetHashCodeOfSingletonResult" type="q3:guid" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetIdOfSingletonResult" type="q3:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHashCodeOfTransient">
+  <xs:element name="GetIdOfTransient">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHashCodeOfTransientResponse">
+  <xs:element name="GetIdOfTransientResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetHashCodeOfTransientResult" type="q4:guid" />
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetIdOfTransientResult" type="q4:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHashCodeOfSelf">
+  <xs:element name="GetIdOfSelf">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHashCodeOfSelfResponse">
+  <xs:element name="GetIdOfSelfResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetHashCodeOfSelfResult" type="q5:guid" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetIdOfSelfResult" type="q5:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

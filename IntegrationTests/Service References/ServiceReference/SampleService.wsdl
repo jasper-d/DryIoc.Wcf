@@ -12,35 +12,35 @@
   <wsdl:message name="ISampleService_GetData_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataResponse" />
   </wsdl:message>
-  <wsdl:message name="ISampleService_GetHashCodeOfFoo_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetHashCodeOfFoo" />
+  <wsdl:message name="ISampleService_GetIdOfFoo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdOfFoo" />
   </wsdl:message>
-  <wsdl:message name="ISampleService_GetHashCodeOfFoo_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetHashCodeOfFooResponse" />
+  <wsdl:message name="ISampleService_GetIdOfFoo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdOfFooResponse" />
   </wsdl:message>
-  <wsdl:message name="ISampleService_GetHashCodeOfBar_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetHashCodeOfBar" />
+  <wsdl:message name="ISampleService_GetIdOfBar_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdOfBar" />
   </wsdl:message>
-  <wsdl:message name="ISampleService_GetHashCodeOfBar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetHashCodeOfBarResponse" />
+  <wsdl:message name="ISampleService_GetIdOfBar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdOfBarResponse" />
   </wsdl:message>
-  <wsdl:message name="ISampleService_GetHashCodeOfSingleton_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetHashCodeOfSingleton" />
+  <wsdl:message name="ISampleService_GetIdOfSingleton_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdOfSingleton" />
   </wsdl:message>
-  <wsdl:message name="ISampleService_GetHashCodeOfSingleton_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetHashCodeOfSingletonResponse" />
+  <wsdl:message name="ISampleService_GetIdOfSingleton_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdOfSingletonResponse" />
   </wsdl:message>
-  <wsdl:message name="ISampleService_GetHashCodeOfTransient_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetHashCodeOfTransient" />
+  <wsdl:message name="ISampleService_GetIdOfTransient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdOfTransient" />
   </wsdl:message>
-  <wsdl:message name="ISampleService_GetHashCodeOfTransient_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetHashCodeOfTransientResponse" />
+  <wsdl:message name="ISampleService_GetIdOfTransient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdOfTransientResponse" />
   </wsdl:message>
-  <wsdl:message name="ISampleService_GetHashCodeOfSelf_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetHashCodeOfSelf" />
+  <wsdl:message name="ISampleService_GetIdOfSelf_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdOfSelf" />
   </wsdl:message>
-  <wsdl:message name="ISampleService_GetHashCodeOfSelf_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetHashCodeOfSelfResponse" />
+  <wsdl:message name="ISampleService_GetIdOfSelf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdOfSelfResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_BarEqualsFooBar_InputMessage">
     <wsdl:part name="parameters" element="tns:BarEqualsFooBar" />
@@ -59,25 +59,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetData" message="tns:ISampleService_GetData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetDataResponse" message="tns:ISampleService_GetData_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetHashCodeOfFoo">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfFoo" message="tns:ISampleService_GetHashCodeOfFoo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfFooResponse" message="tns:ISampleService_GetHashCodeOfFoo_OutputMessage" />
+    <wsdl:operation name="GetIdOfFoo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetIdOfFoo" message="tns:ISampleService_GetIdOfFoo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetIdOfFooResponse" message="tns:ISampleService_GetIdOfFoo_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetHashCodeOfBar">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfBar" message="tns:ISampleService_GetHashCodeOfBar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfBarResponse" message="tns:ISampleService_GetHashCodeOfBar_OutputMessage" />
+    <wsdl:operation name="GetIdOfBar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetIdOfBar" message="tns:ISampleService_GetIdOfBar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetIdOfBarResponse" message="tns:ISampleService_GetIdOfBar_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetHashCodeOfSingleton">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfSingleton" message="tns:ISampleService_GetHashCodeOfSingleton_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfSingletonResponse" message="tns:ISampleService_GetHashCodeOfSingleton_OutputMessage" />
+    <wsdl:operation name="GetIdOfSingleton">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetIdOfSingleton" message="tns:ISampleService_GetIdOfSingleton_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetIdOfSingletonResponse" message="tns:ISampleService_GetIdOfSingleton_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetHashCodeOfTransient">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfTransient" message="tns:ISampleService_GetHashCodeOfTransient_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfTransientResponse" message="tns:ISampleService_GetHashCodeOfTransient_OutputMessage" />
+    <wsdl:operation name="GetIdOfTransient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetIdOfTransient" message="tns:ISampleService_GetIdOfTransient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetIdOfTransientResponse" message="tns:ISampleService_GetIdOfTransient_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetHashCodeOfSelf">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfSelf" message="tns:ISampleService_GetHashCodeOfSelf_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetHashCodeOfSelfResponse" message="tns:ISampleService_GetHashCodeOfSelf_OutputMessage" />
+    <wsdl:operation name="GetIdOfSelf">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetIdOfSelf" message="tns:ISampleService_GetIdOfSelf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetIdOfSelfResponse" message="tns:ISampleService_GetIdOfSelf_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="BarEqualsFooBar">
       <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/BarEqualsFooBar" message="tns:ISampleService_BarEqualsFooBar_InputMessage" />
@@ -99,8 +99,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetHashCodeOfFoo">
-      <soap:operation soapAction="http://tempuri.org/ISampleService/GetHashCodeOfFoo" style="document" />
+    <wsdl:operation name="GetIdOfFoo">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetIdOfFoo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -108,8 +108,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetHashCodeOfBar">
-      <soap:operation soapAction="http://tempuri.org/ISampleService/GetHashCodeOfBar" style="document" />
+    <wsdl:operation name="GetIdOfBar">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetIdOfBar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -117,8 +117,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetHashCodeOfSingleton">
-      <soap:operation soapAction="http://tempuri.org/ISampleService/GetHashCodeOfSingleton" style="document" />
+    <wsdl:operation name="GetIdOfSingleton">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetIdOfSingleton" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -126,8 +126,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetHashCodeOfTransient">
-      <soap:operation soapAction="http://tempuri.org/ISampleService/GetHashCodeOfTransient" style="document" />
+    <wsdl:operation name="GetIdOfTransient">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetIdOfTransient" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -135,8 +135,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetHashCodeOfSelf">
-      <soap:operation soapAction="http://tempuri.org/ISampleService/GetHashCodeOfSelf" style="document" />
+    <wsdl:operation name="GetIdOfSelf">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetIdOfSelf" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

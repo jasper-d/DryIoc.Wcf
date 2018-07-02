@@ -7,7 +7,7 @@ using MoreLinq;
 namespace WcfSample.Service
 {
     public class SampleService : ISampleService {
-        private readonly Guid _hash;
+        private readonly Guid _id;
         private IFoo _foo;
         private IBar _bar;
         private ISingleton _singleton;
@@ -15,53 +15,36 @@ namespace WcfSample.Service
         private IAsyncClass _asyncClass;
 
         public SampleService(IFoo foo, IBar bar, ISingleton singleton, ITransient transient, IAsyncClass asyncClass) {
-            _hash = Guid.NewGuid();
-            if (foo == null) {
-                throw new ArgumentNullException(nameof(foo));
-            }
-            if (bar == null) {
-                throw new ArgumentNullException(nameof(bar));
-            }
-            if (singleton == null) {
-                throw new ArgumentNullException(nameof(singleton));
-            }
-            if (transient == null) {
-                throw new ArgumentNullException(nameof(transient));
-            }
-
-            if (asyncClass == null) {
-                throw new ArgumentNullException(nameof(asyncClass));
-            }
-
-            _foo = foo;
-            _bar = bar;
-            _singleton = singleton;
-            _transient = transient;
-            _asyncClass = asyncClass;
+            _id = Guid.NewGuid();
+            _foo = foo ?? throw new ArgumentNullException(nameof(foo));
+            _bar = bar ?? throw new ArgumentNullException(nameof(bar));
+            _singleton = singleton ?? throw new ArgumentNullException(nameof(singleton));
+            _transient = transient ?? throw new ArgumentNullException(nameof(transient));
+            _asyncClass = asyncClass ?? throw new ArgumentNullException(nameof(asyncClass));
         }
 
         public string GetData(int value) {
             return value.ToString();
         }
 
-        public Guid GetHashCodeOfFoo() {
-            return _foo.GetHash();
+        public Guid GetIdOfFoo() {
+            return _foo.GetId();
         }
 
-        public Guid GetHashCodeOfBar() {
-            return _bar.GetHash();
+        public Guid GetIdOfBar() {
+            return _bar.GetId();
         }
 
-        public Guid GetHashCodeOfSingleton() {
-            return _singleton.GetHash();
+        public Guid GetIdOfSingleton() {
+            return _singleton.GetId();
         }
 
-        public Guid GetHashCodeOfTransient() {
-            return _transient.GetHash();
+        public Guid GetIdOfTransient() {
+            return _transient.GetId();
         }
 
-        public Guid GetHashCodeOfSelf() {
-            return _hash;
+        public Guid GetIdOfSelf() {
+            return _id;
         }
 
         public bool BarEqualsFooBar() {
@@ -72,8 +55,8 @@ namespace WcfSample.Service
             var results = await Task.WhenAll(Enumerable.Range(0, 10).Select(i => _asyncClass.ResolveTransientAsync()));
             var first = results.First();
             var count = results.Count();
-            var hashCodes = results.Select(r => r.GetHashCode());
-            var distinctCount = results.DistinctBy(x => x.GetHashCode()).Count();
+            var ids = results.Select(r => r.GetId());
+            var distinctCount = results.DistinctBy(x => x.GetId()).Count();
 
             return count == distinctCount && results.All(r => r != null);
         }
