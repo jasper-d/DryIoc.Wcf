@@ -36,15 +36,8 @@ Write-Host "Executing test..." -ForegroundColor Magenta
 
 $xunitExitCode = $LastExitCode
 
-write-host "stop iis express"  -foregroundcolor magenta
-stop-process -name "iisexpress"
-
-#Upload test results when running on Appveyor
-if($env:APPVEYOR_JOB_ID -and $false) {
-	Write-Host "Uploading test results..."  -ForegroundColor Magenta
-    $wc = New-Object 'System.Net.WebClient'
-    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", $testResults)
-}
+Write-Host "Stopping ISS Express"  -ForegroundColor magenta
+Stop-Process -Name "iisexpress"
 
 Remove-Item $testResults -ErrorAction SilentlyContinue
 
@@ -64,12 +57,12 @@ Start-Process $opencover -ArgumentList $args -NoNewWindow
 Start-Sleep -s 5
 
 &$xunit $integrationTestAppPath
-stop-process -name "iisexpress"
-start-sleep -s 20
+Stop-Process -name "iisexpress"
+Start-Sleep -s 20
 
 if($LastExitCode -ne 0) {
     Write-Host "Coverage analysis failed, terminating build" -ForegroundColor Yellow -BackgroundColor Red
     $host.SetShouldExit($LastExitCode)
 } 
 
-write-host "Done testing"
+Write-Host "Done testing"
