@@ -10,4 +10,6 @@ Version [0.6.x](https://www.nuget.org/packages/DryIoc.Wcf.dll/0.6.3.52944) for D
 
 Version [1.x](https://www.nuget.org/packages/DryIoc.Wcf.dll/1.0.0.48310) for DryIoc v.[3.0.0,4.0)
 
+Version [4.x](https://www.nuget.org/packages/DryIoc.Wcf.dll/4.0.0.50709) for DryIoc v.[4.0.0,5.0)
+
 See WcfSample.Service for usage example.
