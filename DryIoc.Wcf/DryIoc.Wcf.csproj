@@ -32,7 +32,7 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DryIoc.dll" Version="4.0.0" />
+    <PackageReference Include="DryIoc.dll" Version="[4.0.0,5.0.0)" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ServiceModel" />
