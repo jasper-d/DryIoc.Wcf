@@ -35,7 +35,7 @@ namespace DryIoc.Wcf.Tests {
         public void InstanceProviderIsSetForImplementedContracts() {
             var sut = new DryIocServiceBehavior(_containerMock.Object);
             var serviceEndpoints = new[] {
-                new ServiceEndpoint(new ContractDescription(nameof(String)) { ContractType = typeof(String)})
+                new ServiceEndpoint(new ContractDescription(nameof(String)) { ContractType = typeof(string)})
             };
 
             var serviceDescription = new ServiceDescription(serviceEndpoints) { ServiceType = typeof(string) };

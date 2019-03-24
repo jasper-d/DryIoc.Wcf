@@ -1,10 +1,10 @@
-﻿if(!(Test-Path .\test-results.xml)){
+if(!(Test-Path .\test-results.xml)){
     New-Item -name test-results.xml
 }
 
-$opencover = (Resolve-Path .\packages\OpenCover.*\tools\OpenCover.Console.exe)
-$coveralls = (Resolve-Path .\packages\coveralls.io.*\tools\coveralls.net.exe)
-$xunit = (Resolve-Path .\packages\xunit.runner.console.*\tools\net4*\xunit.console.exe)
+$opencover = (Resolve-Path .\packages\OpenCover.*\tools\OpenCover.Console.exe) | sort -descending | select -first 1
+$coveralls = (Resolve-Path .\packages\coveralls.io.*\tools\coveralls.net.exe) | sort -descending | select -first 1
+$xunit = (Resolve-Path .\packages\xunit.runner.console.*\tools\net4*\xunit.console.exe) | sort -descending | select -first 1
 $testResults = (Resolve-Path .\test-results.xml)
 
 $port = 11119

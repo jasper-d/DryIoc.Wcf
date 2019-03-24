@@ -7,13 +7,13 @@
     <Description>WCF integration for DryIoc based on Simple Injector WCF integration</Description>
     <PackageTags>DryIoc, WCF, IoC, DI</PackageTags>
     <Copyright>Jasper Dunker, Simple Injector Contributors</Copyright>
-    <PackageLicenseUrl>https://github.com/jasper-d/dryioc.wcf/blob/master/license.md</PackageLicenseUrl>
+    <License>../license.md</License>
     <PackageProjectUrl>https://github.com/jasper-d/dryioc.wcf/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jasper-d/dryioc.wcf</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <IncludeSymbols>true</IncludeSymbols>
-    <Version>1.0.0</Version>
+    <Version>1.0.0-beta</Version>
     <PackageId>DryIoc.Wcf.dll</PackageId>
     <IsPackable>true</IsPackable>
     <Product>DryIoc.Wcf.dll</Product>
@@ -32,10 +32,11 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DryIoc.dll" Version="[3.0.0,4.0)" />
+    <PackageReference Include="DryIoc.dll" Version="4.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Activation" />
+    <None Include="../license.md" Pack="true" PackagePath="$(PackageLicenseFile)"/>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using System.ServiceModel;
 using FastExpressionCompiler;
+using FastExpressionCompiler.LightExpression;
 using Moq;
 using Xunit;
 
@@ -81,7 +82,7 @@ namespace DryIoc.Wcf.Tests {
 
         private (T instance, Mock<FactoryStub> factory) SetupFactoryForSingletonResolution<T>(Type contractType, Type implType) where T : new() {
             SetContainer(_container.Object);
-            T instance = new T();
+            var instance = new T();
             var factory = new Mock<FactoryStub>();
             factory.SetupGet(f => f.ImplementationType).Returns(implType);
             factory.SetupGet(f => f.Reuse).Returns(Reuse.InThread);
@@ -99,13 +100,13 @@ namespace DryIoc.Wcf.Tests {
         }
 
         public class FactoryStub : Factory {
-            public override ExpressionInfo CreateExpressionOrDefault(Request request) {
+            public override Expression CreateExpressionOrDefault(Request request) {
                 return null;
             }
         }
 
         private void SetContainer(IContainer container) {
-            var fieldInfo = typeof(DryIocServiceHostFactory).GetField("s_container", BindingFlags.NonPublic | BindingFlags.Static);
+            var fieldInfo = typeof(DryIocServiceHostFactory).GetField("Container", BindingFlags.NonPublic | BindingFlags.Static);
             fieldInfo.SetValue(null, container);
         }
 

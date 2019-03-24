@@ -41,6 +41,13 @@ csharp_space_between_method_call_parameter_list_parentheses        = false
 csharp_preserve_single_line_statements = false
 csharp_preserve_single_line_blocks = true
 
+# Accessibility Modifiers
+dotnet_style_require_accessibility_modifiers = always
+csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async
+
+# Readonly fields
+dotnet_style_readonly_field = true:warning
+
 # Avoid "this." if not necessary
 dotnet_style_qualification_for_field                       = false : suggestion
 dotnet_style_qualification_for_property                    = false : suggestion
@@ -52,17 +59,32 @@ dotnet_style_predefined_type_for_locals_parameters_members = true : suggestion
 dotnet_style_predefined_type_for_member_access             = false : suggestion
 
 # Suggest more modern language features when available
-csharp_style_pattern_matching_over_is_with_cast_check = true : none
-csharp_style_pattern_matching_over_as_with_null_check = true : none
-csharp_style_inlined_variable_declaration             = true : none
-csharp_style_throw_expression                         = true : none
-csharp_style_conditional_delegate_call                = true : none
+csharp_style_pattern_matching_over_is_with_cast_check = true : suggestion
+csharp_style_pattern_matching_over_as_with_null_check = true : suggestion
+csharp_style_inlined_variable_declaration             = true : suggestion
+csharp_style_throw_expression                         = true : suggestion
+csharp_style_conditional_delegate_call                = true : suggestion
 
 dotnet_style_object_initializer                            = true : suggestion
 dotnet_style_collection_initializer                        = true : suggestion
 dotnet_style_coalesce_expression                           = true : suggestion
 dotnet_style_null_propagation                              = true : suggestion
 dotnet_style_explicit_tuple_names                          = true : suggestion
+
+dotnet_style_prefer_inferred_anonymous_type_member_names = false : suggestion
+dotnet_style_prefer_inferred_tuple_names = true : suggestion
+dotnet_style_prefer_auto_properties = true : suggestion
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true : suggestion
+
+csharp_style_expression_bodied_methods = when_on_single_line : suggestion
+csharp_style_expression_bodied_constructors = when_on_single_line : suggestion
+csharp_style_expression_bodied_operators = when_on_single_line : suggestion
+csharp_style_expression_bodied_properties = when_on_single_line : suggestion
+csharp_style_expression_bodied_indexers = when_on_single_line : suggestion
+
+csharp_prefer_simple_default_expression = true : suggestion
+csharp_style_deconstructed_variable_declaration = true : suggestion
+
 
 # PascalCase style
 dotnet_naming_style.pascal_case_style.capitalization  = pascal_case
@@ -79,6 +101,23 @@ dotnet_naming_style.interface_style.required_prefix = I
 dotnet_naming_style.private_fields_style.capitalization  = camel_case
 dotnet_naming_style.private_fields_style.required_prefix = _
 
+
+# Constants must be all caps (constants_must_be_all_caps) MY_CONSTANT
+[*.cs]
+dotnet_naming_rule.constants_must_be_all_caps.symbols            = constant_fields
+dotnet_naming_symbols.constant_fields.applicable_kinds           = field
+dotnet_naming_symbols.constant_fields.required_modifiers         = const
+dotnet_naming_rule.constants_must_be_all_caps.style              = all_caps
+dotnet_naming_rule.constants_must_be_all_caps.severity           = warning
+
+# Static members must be capitalized (static_members_must_be_capitalized)
+[*.cs]
+dotnet_naming_rule.static_members_must_be_capitalized.symbols            = static_symbols
+dotnet_naming_symbols.static_symbols.applicable_kinds                    = field
+dotnet_naming_symbols.static_symbols.required_modifiers                  = static
+dotnet_naming_rule.static_members_must_be_capitalized.style              = pascal_case_style
+dotnet_naming_rule.static_members_must_be_capitalized.severity           = warning
+
 # Public members must be capitalized (public_members_must_be_capitalized)
 [*.cs]
 dotnet_naming_rule.public_members_must_be_capitalized.symbols   = public_symbols
@@ -94,23 +133,6 @@ dotnet_naming_symbols.private_fields.applicable_kinds           = field
 dotnet_naming_symbols.private_fields.applicable_accessibilities = private
 dotnet_naming_rule.private_fields_prefixed.style                = private_fields_style
 dotnet_naming_rule.private_fields_prefixed.severity             = warning
-
-
-# Static members must be capitalized (class_must_be_capitalized)
-#[*.cs]
-dotnet_naming_rule.static_members_must_be_capitalized.symbols            = static_symbols
-dotnet_naming_symbols.static_symbols.applicable_kinds                    = field
-dotnet_naming_symbols.static_symbols.required_modifiers                  = static
-dotnet_naming_rule.static_members_must_be_capitalized.style              = pascal_case_style
-dotnet_naming_rule.static_members_must_be_capitalized.severity           = warning
-
-# Constants must be all caps (constants_must_be_all_caps) MY_CONSTANT
-[*.cs]
-dotnet_naming_rule.constants_must_be_all_caps.symbols            = constant_fields
-dotnet_naming_symbols.constant_fields.applicable_kinds           = field
-dotnet_naming_symbols.constant_fields.required_modifiers         = const
-dotnet_naming_rule.constants_must_be_all_caps.style              = all_caps
-dotnet_naming_rule.constants_must_be_all_caps.severity           = warning
 
 # Class, Struct, Enum, Method must be captilized (class_must_be_capitalized)
 [*.cs]

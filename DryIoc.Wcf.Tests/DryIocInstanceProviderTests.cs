@@ -33,7 +33,7 @@ namespace DryIoc.Wcf.Tests {
         [Fact]
         public void GetInstanceResolvesInstanceUsingDryIoc() {
             var serviceType = typeof(string);
-            var resolvedObject = string.Empty;
+            var resolvedObject = String.Empty;
             var message = new Mock<Message>(MockBehavior.Loose).Object;
 
             _containerMock.SetupGet(c => c.CurrentScope).Returns(default(IScope));
@@ -52,7 +52,7 @@ namespace DryIoc.Wcf.Tests {
         [Fact]
         public void ContainerIsDisposedIfResolveThrows() {
             var serviceType = typeof(string);
-            var resolvedObject = string.Empty;
+            var resolvedObject = String.Empty;
 
             _containerMock.SetupGet(c => c.CurrentScope).Returns(default(IScope));
             _containerMock.SetupGet(c => c.ScopeContext).Returns(default(IScopeContext));
